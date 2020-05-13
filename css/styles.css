@@ -11,12 +11,17 @@
 }
 
 .mdl-layout__title {
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
   font-weight: normal;
   font-family: 'Fredericka the Great', cursive;
   line-height: 35px;
   margin-top: 25px;
+  color: blue;
+}
+
+.mdl-card__title {
+  color: rgba(0,0,0,.7)
 }
 
 .is-compact .mdl-layout__title span {
