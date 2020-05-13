@@ -4,7 +4,7 @@ title: "Design Thinking for Solo Technical Writers"
 show: true
 comments: true
 ---
-<img src="/assets/restless-reinvention.png" align ="right">
+<img src="/assets/restless-reinvention.PNG" align ="right">
 I'm an [IBM-certified Design Thinking Co-Creator](https://www.youracclaim.com/badges/231db2da-f36e-44e0-8cdc-af5ab45c6db0/public_url). Far as I'm concerned, 'twas serendipity! I'd been googling for UX courses, and stumbled upon IBM's [series](https://www.ibm.com/design/thinking/page/courses/Practitioner) instead. 
 
 As a technical writer, it's my job to focus on user goals in all my tasks. As a remote worker though, I do run the risk of missing outliers while planning doc structures or scope. Then there's the actual writing, reviews, improvs...you know the drill.  
