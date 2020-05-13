@@ -1,0 +1,30 @@
+{% case include.name %}
+	{% when "Angular 2" %}
+		{% assign tagName="angular2" %}
+	{% when "ASP.NET" %}
+		{% assign tagName="aspnet" %}
+	{% when "Github Pages" %}
+		{% assign tagName="githubpages" %}
+	{% when "Ionic 2" %}
+		{% assign tagName="ionic2" %}
+	{% when "Material Design" %}
+		{% assign tagName="mdl" %}
+	{% when "OSI PI" %}
+		{% assign tagName="osipi" %}
+	{% when "Tech Blog Thursday" %}
+		{% assign tagName="tbt" %}
+	{% when "Microsoft Azure" %}
+		{% assign tagName="azure" %}
+	{% when "Monthly challenge" %}
+		{% assign tagName="monthlychallenge" %}
+	{% when "C#" %}
+		{% assign tagName="csharp" %}
+	{% else %}
+		{% assign tagName=include.name %}
+{% endcase %}
+
+<a href="/tagged/{{ tagName | downcase }}">
+    <span class="mdl-chip">
+        <span class="mdl-chip__text">{{ include.name }}</span>
+    </span>
+</a>
