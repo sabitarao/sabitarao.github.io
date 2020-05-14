@@ -6,13 +6,8 @@ layout: default
 {% for post in posts %}
 {% if post.show == true %}
 <div class="mdl-cell mdl-card mdl-shadow--4dp">
-    <!--<div class="mdl-card__media">-->
-        <!--<img class="article-image" src=" images/example-work01.jpg" border="0" alt="">-->
-    <!--</div>-->
     <div class="mdl-card__title text-card-top">
         <div class="text-card-title">{{ post.title }}</div>
-        <div class="subtext clear-card-subtext center-text">{{ post.company }}</div>
-        <div class="subtext clear-card-subtext center-text">{{ post.display_date }}</div>
     </div>
 
     <div class="mdl-card__supporting-text flex-column no-top-padding">

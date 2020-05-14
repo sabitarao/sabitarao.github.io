@@ -17,6 +17,6 @@ collections:
 
 # Build settings
 markdown: kramdown
-permalink: /entries/:year/:month/:day/:title
+-permalink: /entries/:year/:month/:day/:title
 highlighter: rouge
 plugins: ["jemoji"]

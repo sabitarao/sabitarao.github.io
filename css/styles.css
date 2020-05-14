@@ -187,10 +187,6 @@ footer {
     max-height: 40px;
 }
 
-.mdl-card {
-    min-height: fit-content;
-}
-
 .mdl-layout__header {
     background-color: #eee0;
 }
