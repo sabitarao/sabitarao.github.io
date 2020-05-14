@@ -4,7 +4,7 @@ title: "Design Thinking for Solo Technical Writers"
 show: true
 comments: true
 ---
-<img src="/assets/restless-reinvention.png" align ="right">
+<img src="/assets/restless-reinvention.PNG" align ="right">
 I'm an IBM-certified [Design Thinking Co-Creator](https://www.youracclaim.com/badges/231db2da-f36e-44e0-8cdc-af5ab45c6db0/public_url). It's serendipity! I stumbled upon IBM's [series](https://www.ibm.com/design/thinking/page/courses/Practitioner) while googling unrelated topics.  
 What does design thinking have to do with writing, or any task, really?
 
