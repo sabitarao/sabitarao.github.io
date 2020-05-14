@@ -20,8 +20,18 @@
   color: blue;
 }
 
+.mdl-card {
+    min-height: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
 .mdl-card__title {
   color: rgba(0,0,0,.7)
+}
+
+.mdl-card__supporting-text {
+    color: rgba(0,0,0,.7);
 }
 
 .is-compact .mdl-layout__title span {
