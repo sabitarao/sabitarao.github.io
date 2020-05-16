@@ -11,11 +11,10 @@ As a technical writer, it's my job to focus on user goals in all my tasks. As a 
 
 So if stakeholders' meetings threaten drastic edits to those perfectly-crafted sentences and info architecture layouts, the rebel in me sees red, naturally!  
 
-It's exactly the sort of risk that design thinking can *minimize*. With end-user goals at the center of discussion, team members across job roles collaborate at every stage of product development (and technical writing, by extension). Giving dev teams a say in doc design/planning/publishing makes them care about product docs. True story!  
-
-<img src="/assets/restless-reinvention.PNG" align ="left">  
+It's exactly the sort of risk that design thinking can *minimize*. It requires team members across job roles to collaborate at every stage of product development (and technical writing, by extension), with end-user goals at the center of discussions. Giving dev teams a say in doc design/planning/publishing makes them care about product docs. True story!  
+<img src="/assets/restless-reinvention.PNG" align ="right">  
 Design thinking reminds me to focus on empathy, human-centered solutions, and continuous improvement.
- 
+
 If I have to pick one aspect of design thinking that (sole) writers must imbibe, it's this: *Fail fast and cheap*. By *not* aiming for a 'perfect' draft, I spend less time theorizing about possible solutions, and more time actually improving ones that work.  
 
 **The only constant in life is change. ~Heraclitus**
