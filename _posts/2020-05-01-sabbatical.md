@@ -17,9 +17,9 @@ In early 2018, I learned about <a href ="https://sabitarao.github.io/2020/04/12/
 
 Interviews can whip you into shape like nothing else! The feedback and advice I received from interviewers helped me dig deep, acknowledge my weaknesses, and flaunt my strengths. 
 
-2019 saw me apply to Google's Season of Docs and not make the cut. That was rough, but only until I realized the caliber of writers I was up against. Built up my skills by participating in Hacktoberfest and landing a role in a startup. For a geek like me, being immersed in a barrage of new tech, surrounded by brilliant minds, and practically getting paid to learn, is gold! 
+2019 saw me apply to Google's Season of Docs and not make the cut. That was rough, but only until I realized the caliber of writers I was up against. Built up my skills by participating in Hacktoberfest, and landed a role in a startup. For a geek like me, being immersed in a barrage of new tech, surrounded by brilliant minds, and practically getting paid to learn, is gold! 
 
-Today, I'm truly comfortable with docs-as-code. (Still gotta figure out the Ruby-Middleman-SassC conundrum, and experiment with Hugo+Docsy, but I'm getting there.) None of this would've happened without a sabbatical. Okay, maybe some of it would've, but I'd hardly be in the same mental space as I am today.  
+Today, I'm truly comfortable in the docs-as-code world. (Still gotta figure out advanced git commands, the Ruby-Middleman-SassC conundrum, and start working with Hugo+Docsy, but I'm getting there.) None of this would've happened without a sabbatical. (Okay, maybe some of it would've.)  
 
 <img src="/assets/trek.jpeg" width="50%" align ="right"> The sabbatical made me *want* to be a technical writer again. That little step away packed a ton of perspective!  
 
