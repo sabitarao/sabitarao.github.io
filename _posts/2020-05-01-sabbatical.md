@@ -11,7 +11,7 @@ After 12 years of tech writing in the corporate world, I went on a sabbatical in
 
 In the months that followed, I immersed myself in online courses ranging from UX to entrepreneurship. Anything that caught my fancy, really. Spent my free time volunteering at <a href="https://charlies-care.com/" target="/_blank">my favorite animal shelter</a>, traveling, and clicking pics of <a href="https://www.flickr.com/photos/sabitarao/39729606204/" target="_blank">my muse</a>. I completed my AOW scuba certification too, and seriously contemplated a career change! :)  
 
-<img src="/assets/scuba.jpeg" width="50%" align ="middle"> (That's me in the middle, with the funny hair)  
+<img src="/assets/scuba.jpeg" width="50%" align ="middle" alt="scuba diving group pic"> (That's me in the middle, with the funny hair)  
 
 In early 2018, I learned about <a href ="https://sabitarao.github.io/2020/04/12/ikigai.html" target ="_blank">Ikigai</a>, and it afforded me the clarity I'd been missing all along. Dived into courses again, this time with a purpose. I focused on <a href="https://www.freecodecamp.org/sabitarao" target="_blank">front-end web development</a>, <a href="https://gist.github.com/sabitarao" target="/_blank">coding</a>, and docs-as-code. Started giving corporate interviews to see where I stood in the tech writing world that I'd left behind.
 

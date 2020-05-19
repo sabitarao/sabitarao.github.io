@@ -5,7 +5,7 @@ show: true
 comments: true
 ---
 What does design thinking have to do with writing, or any task, really?
-<p><img src="/assets/design-thinking.jpg" alt="design thinking" width="50%"> Image credits: <a href="https://www.flickr.com/photos/christineprefontaine/8667743577" target="_blank">Christine Prefontaine</a></p>   
+<p><img src="/assets/design-thinking.jpg" alt="design thinking" width="50%" alt="design thinking work flow"> Image credits: <a href="https://www.flickr.com/photos/christineprefontaine/8667743577" target="_blank">Christine Prefontaine</a></p>   
 
 I'm an IBM-certified <a href="https://www.youracclaim.com/badges/231db2da-f36e-44e0-8cdc-af5ab45c6db0/public_url" target="_blank">Design Thinking Co-Creator</a>. It's serendipity! I stumbled upon IBM's <a href="https://www.ibm.com/design/thinking/page/courses/Practitioner" target="_blank">series</a> a year ago, while googling unrelated topics.  
 

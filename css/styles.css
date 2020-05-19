@@ -196,9 +196,6 @@ a {
     font-weight: 500;
 }
 
-.mdl-button--accent.mdl-button--accent {
-    color: #009999;
-}
 .mdl-button{
     font-size: 12px;
 }
@@ -209,4 +206,7 @@ a {
 
 .mdl-button--icon {
     font-size: 24px;
+}
+.mdl-button--accent.mdl-button--accent {
+    color: #2f2f98;
 }
