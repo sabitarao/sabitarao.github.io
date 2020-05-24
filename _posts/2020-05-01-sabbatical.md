@@ -9,7 +9,7 @@ Hear me out.
 
 After 12 years of tech writing in the corporate world, I went on a sabbatical in 2016. I had no plan or alternate source of income. (Gotta admit, a little too adventurous even for me!) I was driven to do something, anything, radically different from my routine.
 
-In the months that followed, I immersed myself in online courses ranging from UX to entrepreneurship. Anything that caught my fancy, really. Spent my free time volunteering at <a href="https://charlies-care.com/" target="/_blank">my favorite animal shelter</a>, traveling, and clicking pics of <a href="https://www.flickr.com/photos/sabitarao/39729606204/" target="_blank">my muse</a>. I completed my AOW scuba certification too, and seriously contemplated a career change. :)  
+In the months that followed, I immersed myself in online courses ranging from UX to entrepreneurship. Anything that caught my fancy, really. Spent my free time volunteering at <a href="https://charlies-care.com/" target="/_blank">my favorite animal shelter</a>, traveling, and clicking pics of <a href="https://www.flickr.com/photos/sabitarao/48670537817/" target="_blank">my muse</a>. I completed my AOW scuba certification too, and seriously contemplated a career change. :)  
 
 <img src="/assets/scuba.jpeg" width="50%" align ="middle" alt="scuba diving group pic"> (That's me in the middle, with the funny hair)  
 
