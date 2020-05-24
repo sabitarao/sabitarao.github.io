@@ -4,7 +4,7 @@ title: "I HAVE MADE FIRE!"
 show: true
 comments: true
 ---
-<p><img src="/assets/fire.gif" alt="i have made fire"></p>  
+<p><img src="/assets/fire.gif" alt="i have made fire" width="100%"></p>  
 
 <p>Yeah...no. But this week, I wrote lines of code that worked!</p>  
 
