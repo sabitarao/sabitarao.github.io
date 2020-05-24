@@ -6,7 +6,7 @@ comments: true
 ---
 <p><img src="/assets/fire.gif" alt="i have made fire"></p>  
 
-<p>Yeah...no. But I wrote lines of code that worked!</p>  
+<p>Yeah...no. But this week, I wrote lines of code that worked!</p>  
 
 I've been trying to learn Python for a while now. My <a href="
 https://gist.github.com/sabitarao?direction=asc&sort=created" target="_blank">attempts</a> a year ago were fun, but since Jupyter notebooks made it so easy, I remained a coding-noob.
