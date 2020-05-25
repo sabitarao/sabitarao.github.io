@@ -4,8 +4,8 @@ title: "Sabbaticals - Yea or Nay?"
 show: true
 comments: true
 ---
-YEA! :tada:   
-Hear me out.  
+<p>YEA! :tada:   <br>
+</p>
 
 After 12 years of tech writing in the corporate world, I went on a sabbatical in 2016. I had no plan or alternate source of income. (Gotta admit, a little too adventurous even for me!) I was driven to do something, anything, radically different from my routine.
 
@@ -19,12 +19,12 @@ Interviews can whip you into shape like nothing else! The feedback and advice I 
 
 2019 saw me apply to Google's Season of Docs and not make the cut. That was rough, but only until I realized the caliber of writers I was up against. So I improved my skills, participated in Hacktoberfest, and landed a role in a startup. For a geek like me, being immersed in a barrage of new tech, surrounded by brilliant minds, and practically getting paid to learn, is *gold*. 
 
-Today, I'm truly comfortable in the docs-as-code world. (Still gotta figure out advanced git commands, the Ruby-Middleman-SassC conundrum, and start working with Hugo+Docsy, but I'm getting there.)  
+Today, I'm truly comfortable in the docs-as-code world. (Still gotta figure out advanced git commands, the Ruby-Middleman-SassC conundrum, and Hugo+Docsy, but I'm getting there.)  
 
 <img src="/assets/trek.jpeg" width="50%" align ="left">None of this (okay, maybe *some*) would've happened without a sabbatical. It made me *want* to be a technical writer again.  
 That little step away packed a ton of perspective!  
 
-(As for scuba diving, well, I'll complete my rescue diver certification and participate in cleanup dives. We'll see how it goes.) 
+(As for scuba diving, well, I'll complete my rescue diver certification and participate in cleanup dives. Stay tuned to know how it goes.) 
 
 If a clean break from work isn't your thing, that's fine too. Find other ways to infuse your routine with new energy. Volunteer, plan weekend getaways, learn a new skill at work, participate in hackathons, the list is endless. The keyword here is *balance*. Don't bite off more than you can chew, and don't compare yourself to others.
 
