@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>12-Week AI + IA Learning Plan (with NN/g links)</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --row: #f8fafc;
+      --table-border: #e6eefc;
+    }
+    body { margin: 24px; color: #0f172a; background: #ffffff; }
+    h1 { margin: 0 0 8px 0; font-size: 20px; }
+    p.lead { margin: 4px 0 18px 0; color: var(--muted); }
+    .toolbar { display:flex; gap:8px; align-items:center; margin-bottom:12px; }
+    button { background: var(--accent); color: white; border: none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+    button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--table-border); }
+    button.warn { background: #ef4444; }
+    .progress { display:flex; align-items:center; gap:12px; margin-bottom:12px;}
+    .progress .bar { height:12px; background:#e6eefc; border-radius:999px; width:380px; overflow:hidden; }
+    .progress .bar > i { display:block; height:100%; background:var(--accent); width:0%; transition:width .3s ease; }
+    .progress .percent { min-width:48px; color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:collapse; border: 1px solid var(--table-border); }
+    thead th { text-align:left; background:#f1f5f9; padding:10px; font-size:13px; color:#0f172a; border-bottom:1px solid var(--table-border); }
+    tbody td { padding:10px; vertical-align:top; border-bottom:1px solid var(--table-border); font-size:14px; }
+    tbody tr:nth-child(odd) td { background: #fff; }
+    tbody tr:nth-child(even) td { background: #fbfdff; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .col-week { width:48px; font-weight:600; }
+    .col-theme { width:220px; font-weight:600; }
+    .checkbox { display:flex; gap:8px; align-items:center; }
+    .small { font-size:13px; color:var(--muted); }
+    footer { margin-top:18px; font-size:13px; color:var(--muted); }
+    .actions { display:flex; gap:8px; }
+    .note { margin-top:8px; color:#334155; font-size:13px; }
+    @media (max-width:900px){
+      .progress .bar { width:220px; }
+      table { font-size:13px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>12-Week AI + IA Learning Plan (with NN/g links)</h1>
+  <p class="lead">Interactive version — click checkboxes to mark progress. Progress persists in this browser (localStorage).</p>
+
+  <div class="toolbar">
+    <div class="progress" title="Overall progress">
+      <div class="bar"><i id="progressFill" style="width:0%"></i></div>
+      <div class="percent" id="progressText">0% complete</div>
+    </div>
+    <div class="actions" style="margin-left:auto">
+      <button id="exportCsv">Export progress (CSV)</button>
+      <button id="saveFile" class="ghost">Save page as .html</button>
+      <button id="clear" class="warn">Clear progress</button>
+    </div>
+  </div>
+
+  <table id="planTable" aria-label="12-week learning plan">
+    <thead>
+      <tr>
+        <th class="col-week">Week</th>
+        <th class="col-theme">Theme</th>
+        <th>Learning Goals</th>
+        <th>Resources (Core + Playlist + NN/g)</th>
+        <th>Deliverables</th>
+        <th>Week Complete</th>
+        <th>Deliverable Complete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Row 1 -->
+      <tr data-week="1">
+        <td class="col-week"><strong>1</strong></td>
+        <td class="col-theme"><strong>AI 101 for Content Pros</strong></td>
+        <td>Understand AI’s impact on content workflows, user needs, and tooling</td>
+        <td>
+          - <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener">AI for Everyone – Andrew Ng (Coursera)</a><br>
+          - Technical Writers Guide to AI (closest alternates): <a href="https://developers.google.com/tech-writing" target="_blank" rel="noopener">Google Technical Writing Courses</a> • <a href="https://developers.googleblog.com/en/ai-content-search/" target="_blank" rel="noopener">Build with Google AI: Content Search (Doc Agent)</a>
+        </td>
+        <td>1-pager: “How AI is changing tech writing and content systems”</td>
+        <td><input type="checkbox" class="week-check" id="week-1"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-1"></td>
+      </tr>
+
+      <!-- Row 2 -->
+      <tr data-week="2">
+        <td class="col-week"><strong>2</strong></td>
+        <td class="col-theme"><strong>Information Architecture Basics</strong></td>
+        <td>Learn what IA is and how it connects to technical writing</td>
+        <td>
+          - <a href="https://www.howtomakesenseofanymess.com" target="_blank" rel="noopener">How to Make Sense of Any Mess – Abby Covert</a><br>
+          - <a href="https://www.uxbooth.com/articles/information-architecture-101/" target="_blank" rel="noopener">UX Booth: IA Basics</a><br>
+          - <a href="https://www.nngroup.com/articles/do-we-still-need-information-architecture/" target="_blank" rel="noopener">NN/g: Do We Still Need Information Architecture? (Kathryn Whitenton)</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-vs-navigation/?" target="_blank" rel="noopener">The Difference Between IA and Navigation</a><br>
+          - <a href="https://www.nngroup.com/videos/information-architecture-models/?" target="_blank" rel="noopener">Information Architecture: 3 Key Models (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/top-10-ia-mistakes/?" target="_blank" rel="noopener">Top 10 IA Mistakes</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">The 3-Click Rule for Navigation Is False</a><br>
+          - <a href="https://www.nngroup.com/videos/flat-vs-deep-hierarchies/?" target="_blank" rel="noopener">Flat vs. Deep Website Hierarchies (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/polyhierarchies/?" target="_blank" rel="noopener">Polyhierarchies Improve Findability</a><br>
+          - <a href="https://www.nngroup.com/articles/handle-category-outliers/" target="_blank" rel="noopener">How to Handle Category Outliers in Your IA</a>
+        </td>
+        <td>Write a short comparison: “IA vs Technical Writing”</td>
+        <td><input type="checkbox" class="week-check" id="week-2"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-2"></td>
+      </tr>
+
+      <!-- Row 3 -->
+      <tr data-week="3">
+        <td class="col-week"><strong>3</strong></td>
+        <td class="col-theme"><strong>Content Modeling + Taxonomy</strong></td>
+        <td>Structure content for reuse and scale</td>
+        <td>
+          - <a href="https://rosenfeldmedia.com/books/designing-connected-content/" target="_blank" rel="noopener">Designing Connected Content (Ch. 3–5)</a><br>
+          - <a href="https://www.contentdesign.london/content-models/" target="_blank" rel="noopener">Content Modeling 101</a><br>
+          - <a href="https://www.nngroup.com/articles/object-oriented-ux/" target="_blank" rel="noopener">NN/g: Object-Oriented UX (OOUX)</a><br>
+          - <a href="https://www.nngroup.com/videos/polyhierarchy-information-architecture/?" target="_blank" rel="noopener">NN/g: Polyhierarchy in IA (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/taxonomy-101/?" target="_blank" rel="noopener">Taxonomy 101: Definition, Best Practices</a><br>
+          - <a href="https://www.nngroup.com/articles/polyhierarchies/?" target="_blank" rel="noopener">Polyhierarchies Improve Findability (article)</a><br>
+          - <a href="https://www.nngroup.com/articles/handle-category-outliers/" target="_blank" rel="noopener">How to Handle Category Outliers</a>
+        </td>
+        <td>Model one documentation topic using a reusable structure</td>
+        <td><input type="checkbox" class="week-check" id="week-3"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-3"></td>
+      </tr>
+
+      <!-- Row 4 -->
+      <tr data-week="4">
+        <td class="col-week"><strong>4</strong></td>
+        <td class="col-theme"><strong>AI Content Systems</strong></td>
+        <td>Understand how AI generates/retrieves content (vs. static docs)</td>
+        <td>
+          - <a href="https://www.smashingmagazine.com/2024/01/guide-building-rag-systems/" target="_blank" rel="noopener">Smashing Magazine: A Guide to Building RAG Systems</a><br>
+          - <a href="https://platform.openai.com/docs/guides/embeddings/what-are-embeddings" target="_blank" rel="noopener">OpenAI Embeddings Guide</a><br>
+          - <a href="https://www.nngroup.com/articles/findability-vs-discoverability/" target="_blank" rel="noopener">NN/g: Findability vs. Discoverability</a><br>
+          - <a href="https://www.nngroup.com/articles/information-scent/" target="_blank" rel="noopener">NN/g: Information Scent</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">3 Common IA Mistakes (Low Information Scent)</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">Killing Off the Global Navigation: One Trend to Avoid</a>
+        </td>
+        <td>Experiment with ChatGPT: test structured vs. unstructured retrieval</td>
+        <td><input type="checkbox" class="week-check" id="week-4"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-4"></td>
+      </tr>
+
+      <!-- Row 5 -->
+      <tr data-week="5">
+        <td class="col-week"><strong>5</strong></td>
+        <td class="col-theme"><strong>Knowledge Graphs + Ontologies</strong></td>
+        <td>Model relationships between concepts</td>
+        <td>
+          - <a href="https://protege.stanford.edu/" target="_blank" rel="noopener">Protégé Intro</a><br>
+          - <a href="https://www.knowledgegraph.tech/" target="_blank" rel="noopener">Knowledge Graph Academy</a><br>
+          - <a href="https://www.nngroup.com/videos/digital-wayfinding/" target="_blank" rel="noopener">NN/g: Digital Wayfinding (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">Navigation: You Are Here</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">Breadcrumbs: 11 Design Guidelines</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">Local Navigation Is a Valuable Orientation Aid</a>
+        </td>
+        <td>Build a basic concept map for your product’s help docs</td>
+        <td><input type="checkbox" class="week-check" id="week-5"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-5"></td>
+      </tr>
+
+      <!-- Row 6 -->
+      <tr data-week="6">
+        <td class="col-week"><strong>6</strong></td>
+        <td class="col-theme"><strong>RAG & AI-Powered Docs</strong></td>
+        <td>Understand Retrieval-Augmented Generation and chunking</td>
+        <td>
+          - <a href="https://python.langchain.com/docs/tutorials/rag/" target="_blank" rel="noopener">LangChain: Build a RAG (Tutorial)</a><br>
+          - <a href="https://www.youtube.com/watch?v=FZnGqUob7rM" target="_blank" rel="noopener">RAG Simplified – YouTube</a><br>
+          - <a href="https://www.nngroup.com/articles/designing-search-suggestions/" target="_blank" rel="noopener">NN/g: Designing Search Suggestions</a><br>
+          - <a href="https://www.nngroup.com/videos/search-vs-navigation/" target="_blank" rel="noopener">NN/g: Search Box vs. Navigation (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/pinball-pattern-search-results/" target="_blank" rel="noopener">NN/g: The Pinball Pattern of Scanning Search Results</a><br>
+          - <a href="https://www.nngroup.com/topic/information-architecture/?" target="_blank" rel="noopener">NN/g: Utility Navigation</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">NN/g: Footers 101</a>
+        </td>
+        <td>Draft a simple RAG-ready document chunk (structured Q&amp;A format)</td>
+        <td><input type="checkbox" class="week-check" id="week-6"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-6"></td>
+      </tr>
+
+      <!-- Row 7 -->
+      <tr data-week="7">
+        <td class="col-week"><strong>7</strong></td>
+        <td class="col-theme"><strong>Conversational UX & Chatbots</strong></td>
+        <td>Learn how AI-powered conversations are designed</td>
+        <td>
+          - <a href="https://www.oreilly.com/library/view/voice-user-interface/9781491955399/" target="_blank" rel="noopener">Voice UX Design – Cathy Pearl (book)</a><br>
+          - <a href="https://www.voiceflow.com/tutorials" target="_blank" rel="noopener">Voiceflow Tutorials</a><br>
+          - <a href="https://www.nngroup.com/articles/learn-more-links/" target="_blank" rel="noopener">NN/g: “Learn More” Links — You Can Do Better</a><br>
+          - <a href="https://www.nngroup.com/articles/homepage-links/" target="_blank" rel="noopener">NN/g: Why You Need a Home Link</a><br>
+          - <a href="https://www.nngroup.com/articles/menu-design/" target="_blank" rel="noopener">NN/g: Menu Design — Checklist of 15 Guidelines</a><br>
+          - <a href="https://www.nngroup.com/topic/information-architecture/?" target="_blank" rel="noopener">NN/g: Navigation Menus – 5 Tips to Make Them Visible</a><br>
+          - <a href="https://www.nngroup.com/articles/hamburger-menus/" target="_blank" rel="noopener">NN/g: Hamburger Menus and Hidden Navigation Hurt UX</a><br>
+          - <a href="https://www.nngroup.com/topic/information-architecture/?" target="_blank" rel="noopener">NN/g: Audience-Based Website Navigation (video)</a>
+        </td>
+        <td>Map a conversation flow for your doc set (onboarding or troubleshooting)</td>
+        <td><input type="checkbox" class="week-check" id="week-7"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-7"></td>
+      </tr>
+
+      <!-- Row 8 -->
+      <tr data-week="8">
+        <td class="col-week"><strong>8</strong></td>
+        <td class="col-theme"><strong>Personalization in Content</strong></td>
+        <td>AI tailoring of content to context and needs</td>
+        <td>
+          - <a href="https://www.nngroup.com/articles/personalization/" target="_blank" rel="noopener">NN/g: Personalization UX</a><br>
+          - <a href="https://segment.com/blog/what-is-ai-personalization/" target="_blank" rel="noopener">Twilio Segment Blog: What Is AI Personalization?</a><br>
+          - <a href="https://www.nngroup.com/articles/hick-hyman-law/" target="_blank" rel="noopener">NN/g: Hick’s Law</a><br>
+          - <a href="https://www.nngroup.com/articles/how-many-items-in-navigation-menu/" target="_blank" rel="noopener">NN/g: How Many Items in a Navigation Menu?</a><br>
+          - <a href="https://www.nngroup.com/articles/sticky-headers/" target="_blank" rel="noopener">NN/g: Sticky Headers — 5 Ways</a><br>
+          - <a href="https://www.nngroup.com/articles/left-side-vertical-navigation/" target="_blank" rel="noopener">NN/g: Left-Side Vertical Navigation on Desktop</a><br>
+          - <a href="https://www.nngroup.com/articles/mega-menus/" target="_blank" rel="noopener">NN/g: Mega Menus Work Well for Site Navigation</a><br>
+          - <a href="https://www.nngroup.com/articles/centered-logos/" target="_blank" rel="noopener">NN/g: Centered Logos Hurt Website Navigation</a><br>
+          - <a href="https://www.nngroup.com/articles/mobile-navigation-patterns/" target="_blank" rel="noopener">NN/g: Basic Patterns for Mobile Navigation: A Primer</a><br>
+          - <a href="https://www.nngroup.com/videos/vertical-navigation/?" target="_blank" rel="noopener">NN/g: Accordion Icons (video)</a>
+        </td>
+        <td>Reimagine one static page as a dynamic, personalized content experience</td>
+        <td><input type="checkbox" class="week-check" id="week-8"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-8"></td>
+      </tr>
+
+      <!-- Row 9 -->
+      <tr data-week="9">
+        <td class="col-week"><strong>9</strong></td>
+        <td class="col-theme"><strong>Ethics, Bias & Explainability</strong></td>
+        <td>Structure ethical AI content experiences</td>
+        <td>
+          - <a href="https://www.penguinrandomhouse.com/books/273986/weapons-of-math-destruction-by-cathy-oneil/" target="_blank" rel="noopener">Weapons of Math Destruction — Cathy O'Neil</a><br>
+          - <a href="https://www.microsoft.com/en-us/ai/responsible-ai" target="_blank" rel="noopener">Microsoft Responsible AI Guidelines</a><br>
+          - <a href="https://www.nngroup.com/videos/avoid-bias-card-sorting/" target="_blank" rel="noopener">NN/g: How to Avoid Bias in Card Sorting (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">NN/g: Card Sorting: Pushing Users Beyond Terminology Matches</a>
+        </td>
+        <td>Write microcopy or warnings for an AI-powered tool with ethical safeguards</td>
+        <td><input type="checkbox" class="week-check" id="week-9"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-9"></td>
+      </tr>
+
+      <!-- Row 10 -->
+      <tr data-week="10">
+        <td class="col-week"><strong>10</strong></td>
+        <td class="col-theme"><strong>Low-Code AI Tools for Writers</strong></td>
+        <td>Prototype smart content assistants</td>
+        <td>
+          - <a href="https://zapier.com/blog/chatgpt-zapier-integrations/" target="_blank" rel="noopener">Zapier + ChatGPT</a><br>
+          - <a href="https://www.framer.com/academy/topics/ai" target="_blank" rel="noopener">Framer AI (Academy)</a><br>
+          - <a href="https://www.nngroup.com/videos/card-sorting/" target="_blank" rel="noopener">NN/g: Card Sorting — Why & When (Video)</a><br>
+          - <a href="https://www.nngroup.com/videos/open-vs-closed-card-sorting/" target="_blank" rel="noopener">NN/g: Open vs. Closed Card Sorting (Video)</a><br>
+          - <a href="https://www.nngroup.com/videos/card-sorting-organize-offerings/" target="_blank" rel="noopener">NN/g: Card Sorting — How to Organize Product Offerings (Video)</a><br>
+          - <a href="https://www.nngroup.com/videos/tree-testing/" target="_blank" rel="noopener">NN/g: Tree Testing to Evaluate IA Categories (Video)</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">NN/g: Card Sorting: Uncover Users' Mental Models</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">NN/g: Card Sorting — How Many Users to Test</a>
+        </td>
+        <td>Prototype a content assistant or Q&amp;A tool using your docs + sorting insights</td>
+        <td><input type="checkbox" class="week-check" id="week-10"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-10"></td>
+      </tr>
+
+      <!-- Row 11 -->
+      <tr data-week="11">
+        <td class="col-week"><strong>11</strong></td>
+        <td class="col-theme"><strong>Measuring Success</strong></td>
+        <td>Learn how to measure AI/UX success</td>
+        <td>
+          - <a href="https://www.nngroup.com/articles/early-ai-tools-methodology/" target="_blank" rel="noopener">NN/g: Researching the Usability of Early Generative-AI Tools (methodology)</a><br>
+          - <a href="https://www.nngroup.com/videos/castle-framework/" target="_blank" rel="noopener">NN/g: CASTLE Framework (Video)</a><br>
+          - <a href="https://amplitude.com/blog" target="_blank" rel="noopener">Amplitude Blog (Content Analytics)</a><br>
+          - <a href="https://www.nngroup.com/videos/dendrograms-card-sorting/" target="_blank" rel="noopener">NN/g: How to Interpret Dendrograms from Card Sorting (Video)</a>
+        </td>
+        <td>Choose success metrics for an AI-assisted content experience</td>
+        <td><input type="checkbox" class="week-check" id="week-11"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-11"></td>
+      </tr>
+
+      <!-- Row 12 -->
+      <tr data-week="12">
+        <td class="col-week"><strong>12</strong></td>
+        <td class="col-theme"><strong>Capstone: Content Systems in the Age of AI</strong></td>
+        <td>Synthesize everything into a showcase-ready case study</td>
+        <td>
+          - Review playlist + prior deliverables<br>
+          - Optional: Publish on <a href="https://medium.com/" target="_blank" rel="noopener">Medium</a> or <a href="https://uxwritinghub.com/blog/" target="_blank" rel="noopener">UX Writing Hub</a><br>
+          - <a href="https://www.nngroup.com/articles/top-10-ia-mistakes/?" target="_blank" rel="noopener">Review: Top 10 IA Mistakes</a><br>
+          - <a href="https://www.nngroup.com/articles/menu-design/?" target="_blank" rel="noopener">Menu Design: Checklist of 15 Guidelines</a><br>
+          - <a href="https://www.nngroup.com/articles/ia-study-guide/?" target="_blank" rel="noopener">Killing Off the Global Navigation: One Trend to Avoid</a><br>
+          - <a href="https://www.nngroup.com/articles/mega-menus/" target="_blank" rel="noopener">Mega Menus Work Well for Site Navigation</a>
+        </td>
+        <td>Final project: “AI-Enhanced Content Experience for [Your Product/Use Case]”</td>
+        <td><input type="checkbox" class="week-check" id="week-12"></td>
+        <td><input type="checkbox" class="deliv-check" id="deliv-12"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="note">
+    Tip: The checkboxes persist only in this browser. Use "Export progress (CSV)" to save or share your completion state.
+  </div>
+
+  <footer>
+    <p>For personal reference only</p>
+  </footer>
+
+  <script>
+    (function(){
+      // Utility
+      const weeks = Array.from({length:12}, (_,i)=>i+1);
+
+      // load state and initialize
+      function idForWeek(w){ return 'week-'+w; }
+      function idForDeliv(w){ return 'deliv-'+w; }
+
+      function saveState(){
+        const state = {};
+        weeks.forEach(w=>{
+          state['w-'+w] = document.getElementById(idForWeek(w)).checked;
+          state['d-'+w] = document.getElementById(idForDeliv(w)).checked;
+        });
+        localStorage.setItem('aiiaPlanState', JSON.stringify(state));
+        updateProgress();
+      }
+
+      function loadState(){
+        const raw = localStorage.getItem('aiiaPlanState');
+        if (!raw) return;
+        try {
+          const state = JSON.parse(raw);
+          weeks.forEach(w=>{
+            const wc = document.getElementById(idForWeek(w));
+            const dc = document.getElementById(idForDeliv(w));
+            if (wc && ('w-'+w in state)) wc.checked = !!state['w-'+w];
+            if (dc && ('d-'+w in state)) dc.checked = !!state['d-'+w];
+          });
+        } catch(e){ console.warn('Failed to parse saved state', e); }
+        updateProgress();
+      }
+
+      function updateProgress(){
+        const totalChecks = weeks.length * 2; // week + deliv per week
+        let done = 0;
+        weeks.forEach(w=>{
+          if (document.getElementById(idForWeek(w)).checked) done++;
+          if (document.getElementById(idForDeliv(w)).checked) done++;
+        });
+        const pct = Math.round(100 * done / totalChecks);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressText').textContent = pct + '% complete';
+      }
+
+      // wire up change listeners
+      weeks.forEach(w=>{
+        const wc = document.getElementById(idForWeek(w));
+        const dc = document.getElementById(idForDeliv(w));
+        if (wc) wc.addEventListener('change', saveState);
+        if (dc) dc.addEventListener('change', saveState);
+      });
+
+      // export CSV
+      function exportCsv(){
+        const headers = ['Week','Theme','Learning Goals','Resources','Deliverable','Week Complete','Deliverable Complete'];
+        const rows = [];
+        const table = document.getElementById('planTable');
+        const tbody = table.querySelector('tbody');
+        const trs = Array.from(tbody.querySelectorAll('tr'));
+        trs.forEach(tr=>{
+          const week = tr.querySelector('td:nth-child(1)').innerText.trim();
+          const theme = tr.querySelector('td:nth-child(2)').innerText.trim();
+          const goals = tr.querySelector('td:nth-child(3)').innerText.trim();
+          // Resources: extract links & text
+          const resourcesTd = tr.querySelector('td:nth-child(4)');
+          // flatten resource links/text into a single string
+          const linkNodes = Array.from(resourcesTd.querySelectorAll('a'));
+          const resourcesArr = linkNodes.map(a => a.innerText + ' | ' + a.href);
+          // If no links, fallback to innerText
+          if (resourcesArr.length === 0) resourcesArr.push(resourcesTd.innerText.trim());
+          const deliverable = tr.querySelector('td:nth-child(5)').innerText.trim();
+          const weekCheck = tr.querySelector('td:nth-child(6) input').checked ? 'TRUE' : 'FALSE';
+          const delivCheck = tr.querySelector('td:nth-child(7) input').checked ? 'TRUE' : 'FALSE';
+          rows.push([week, theme, goals, resourcesArr.join(' ; '), deliverable, weekCheck, delivCheck]);
+        });
+
+        const csvContent = [headers].concat(rows).map(r => r.map(cell => {
+          // escape quotes
+          return '"' + String(cell).replace(/"/g,'""') + '"';
+        }).join(',')).join('\r\n');
+
+        const blob = new Blob([csvContent], {type: 'text/csv;charset=utf-8;'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'AI_IA_Learning_Plan_progress.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url), 1000);
+      }
+
+      // Save page HTML (simple approach)
+      function savePageAsFile(){
+        const html = '<!doctype html>\\n' + document.documentElement.outerHTML;
+        const blob = new Blob([html], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'AI_IA_Learning_Plan.html';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url), 1500);
+      }
+
+      // Clear progress
+      function clearProgress(){
+        if (!confirm('Clear all saved progress? This will uncheck all boxes and remove saved state.')) return;
+        weeks.forEach(w=>{
+          const wc = document.getElementById(idForWeek(w));
+          const dc = document.getElementById(idForDeliv(w));
+          if (wc) wc.checked = false;
+          if (dc) dc.checked = false;
+        });
+        localStorage.removeItem('aiiaPlanState');
+        updateProgress();
+      }
+
+      // wire up UI
+      document.getElementById('exportCsv').addEventListener('click', exportCsv);
+      document.getElementById('saveFile').addEventListener('click', savePageAsFile);
+      document.getElementById('clear').addEventListener('click', clearProgress);
+
+      // initial load
+      loadState();
+    })();
+  </script>
+</body>
+</html>
