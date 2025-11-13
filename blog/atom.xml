@@ -2,91 +2,194 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sabitarao.github.io/blog</id>
     <title>AI, Words, Workflows Blog</title>
-    <updated>2025-11-11T00:00:00.000Z</updated>
+    <updated>2025-11-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sabitarao.github.io/blog"/>
     <subtitle>AI, Words, Workflows Blog</subtitle>
     <icon>https://sabitarao.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Breaking through analysis-paralysis with iterative auditing]]></title>
+        <title type="html"><![CDATA[Prompt architecting complex content]]></title>
+        <id>https://sabitarao.github.io/blog/prompt-architect-complex-content</id>
+        <link href="https://sabitarao.github.io/blog/prompt-architect-complex-content"/>
+        <updated>2025-11-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A few weeks ago in October, I completed two courses back-to-back, in prompt engineering and information architecture. The prompt engineering course taught me about using AI as an outline builder. The IA course gave me a comprehensive view of taxonomy, content modeling, navigation design, all the structured thinking that makes information findable and usable.]]></summary>
+        <content type="html"><![CDATA[<p>A few weeks ago in October, I completed two courses back-to-back, in prompt engineering and information architecture. The prompt engineering course taught me about using AI as an outline builder. The IA course gave me a comprehensive view of taxonomy, content modeling, navigation design, all the structured thinking that makes information findable and usable.</p>
+<p>And I couldn't help but wonder: <em>Could I use prompt engineering to build a course about prompt engineering for information architects?</em></p>
+<p>It wasn't just about creating a course. It was about testing my new skills and AI. Could I use my IA expertise to validate AI-generated content at scale? Could I set up guardrails that would maintain content credibility? How far could Claude and I get while staying truthful?</p>
+<p>I decided to find out!</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-collaborative-discovery">The collaborative discovery<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#the-collaborative-discovery" class="hash-link" aria-label="Direct link to The collaborative discovery" title="Direct link to The collaborative discovery" translate="no">​</a></h3>
+<p>I didn't start with "Here's my outline, fill it out." I started with a question-asking prompt:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Act as an expert information architect with expert prompt engineering skills. </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Help me design a course on prompt engineering for budding information architects. </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Ask me questions until you have enough data to develop this course.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Ask me the first question now.</span><br></span></code></pre></div></div>
+<p>Claude then asked me ten detailed questions. Far from surface-level, these were deep questions about target audiences, learning outcomes, technical approach, pain points to address, pedagogical style...questions that made me think harder about what I was actually trying to build.</p>
+<p>What resulted was a comprehensive course design summary that transformed my idea into something truly substantial:</p>
+<ul>
+<li class="">16 hours of content across 4 weeks</li>
+<li class="">Four major sections: Foundations, Core IA Tasks, Advanced Applications, Tool Building</li>
+<li class="">Self-paced, practical, focused on real-world deliverables</li>
+<li class="">No-code friendly but with optional prototyping</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-meta-exercise-structure">The meta-exercise structure<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#the-meta-exercise-structure" class="hash-link" aria-label="Direct link to The meta-exercise structure" title="Direct link to The meta-exercise structure" translate="no">​</a></h3>
+<p>This experiment fascinates me because it operates on three interconnected levels simultaneously.</p>
+<ul>
+<li class=""><strong>Testing my IA knowledge</strong> by having me validate AI-generated IA concepts</li>
+<li class=""><strong>Testing my prompt engineering skills</strong> in building complex content systematically</li>
+<li class=""><strong>Testing Claude's capabilities</strong> with strict "no hallucination" directives</li>
+</ul>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="three-days-of-generation">Three days of generation<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#three-days-of-generation" class="hash-link" aria-label="Direct link to Three days of generation" title="Direct link to Three days of generation" translate="no">​</a></h3>
+<p>Once I had the outline, I switched to a template-driven approach (another lesson from my prompt engineering course):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Act as an outline expander information architect. Create a new outline </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for each bullet point in the content I give you. Then, develop detailed </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">content for the outline. At the end, ask me for the next set of content </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">to develop.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Start with Module n.n. Outline each bullet point and develop detailed </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">content for them now.</span><br></span></code></pre></div></div>
+<p>This prompt became my workhorse. Module after module, Claude would:</p>
+<ol>
+<li class="">Take my content bullets</li>
+<li class="">Expand them into detailed outlines</li>
+<li class="">Flesh out the outlines with examples, exercises, code samples</li>
+<li class="">Ask for the next module</li>
+</ol>
+<p>At the end of three days, I had 11 detailed modules with learning objectives, exercises, self-assessment projects, prompt pattern libraries, and code examples.</p>
+<p>The consistency was remarkable. Despite being built in chunks over three days, the content flows seamlessly.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-credibility-paradox">The credibility paradox<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#the-credibility-paradox" class="hash-link" aria-label="Direct link to The credibility paradox" title="Direct link to The credibility paradox" translate="no">​</a></h3>
+<p>Let's get honest.</p>
+<p><strong>What exceeded my expectations:</strong></p>
+<ul>
+<li class="">The depth and detail of generated content</li>
+<li class="">The consistency across 11 modules using template prompts</li>
+<li class="">The complexity of code examples that Claude produced</li>
+<li class="">How well the high-level concepts aligned with actual IA principles</li>
+</ul>
+<p><strong>What I'm still validating</strong>: Every. Single. Code. Example.</p>
+<ul>
+<li class="">Whether the exercises actually work as designed</li>
+<li class="">If the prompt patterns produce the claimed results</li>
+<li class="">Whether the examples are truly original (not memorized content)</li>
+</ul>
+<p>This is the most sobering part of the experiment: <strong>generation speed does NOT equal validation speed.</strong></p>
+<p>I built the course in 3 days. I've been validating and converting it to Mintlify for over a week now, and I'm not done.</p>
+<p>Module 2.2 (Content Modeling) required three runs of my template prompt because I kept hitting context window limits. I've learned the hard way to break large tasks into mini-tasks that AI can handle comfortably.</p>
+<p>The Taxonomy module (Module 2.1) is my favorite so far, because I actually learned from it while validating it. The content wasn't plagiarized, and wasn't based on existing course outlines. It was genuinely useful!</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="audit-in-progress">Audit in progress<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#audit-in-progress" class="hash-link" aria-label="Direct link to Audit in progress" title="Direct link to Audit in progress" translate="no">​</a></h3>
+<p>This course exists in an interesting liminal space:</p>
+<p><strong>What it IS:</strong></p>
+<ul>
+<li class="">A demonstration of what AI can do with expert guidance</li>
+<li class="">A prompt engineering portfolio piece</li>
+<li class="">An experiment in credibility guardrails</li>
+<li class="">A learning tool for me about both IA and prompt engineering</li>
+</ul>
+<p><strong>What it is NOT (yet):</strong></p>
+<ul>
+<li class="">Ready to teach to others</li>
+<li class="">Fully validated and tested</li>
+<li class="">A finished product</li>
+</ul>
+<p>I'm now tweaking the existing Claude Skills to help audit this course.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ive-learned-about-prompts">What I've learned about prompts<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#what-ive-learned-about-prompts" class="hash-link" aria-label="Direct link to What I've learned about prompts" title="Direct link to What I've learned about prompts" translate="no">​</a></h3>
+<p><strong>Prompts are powerful, powerful tools.</strong> They can make or break your AI experience.</p>
+<p>The evolution of my prompting strategy sums it up:</p>
+<ol>
+<li class=""><strong>Discovery phase</strong>: "Ask me questions" (Collaborative, exploratory)</li>
+<li class=""><strong>Structure phase</strong>: "Generate an outline" (Architectural, high-level)</li>
+<li class=""><strong>Expansion phase</strong>: "Expand each bullet point" (Systematic, detailed)</li>
+</ol>
+<p>Each phase required a different prompt architecture. The template-driven approach in phase 3 was crucial for maintaining consistency across 11 modules.</p>
+<p>And my most critical insight: <strong>Fast generation requires slow validation.</strong></p>
+<p>AI creating content "in seconds" is just the generation phase. Verifying accuracy, testing examples, checking for hallucinations, ensuring originality, and validating against domain expertise, that's where human expertise and knowledge become essential.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="was-this-a-successful-experiment">Was this a successful experiment?<a href="https://sabitarao.github.io/blog/prompt-architect-complex-content#was-this-a-successful-experiment" class="hash-link" aria-label="Direct link to Was this a successful experiment?" title="Direct link to Was this a successful experiment?" translate="no">​</a></h3>
+<p><em><strong>Absolutely.</strong></em></p>
+<p>This is a prime example of "Wow, look what AI can do with expert guidance!"</p>
+<p>The course demonstrates:</p>
+<ul>
+<li class="">How structured prompting can generate complex, consistent content</li>
+<li class="">How domain expertise creates essential validation layers</li>
+<li class="">How AI can be a genuine learning partner</li>
+<li class="">How important it is to break large tasks into manageable chunks</li>
+<li class="">The critical difference between generation and validation</li>
+</ul>
+<p><em>I'm not done though.</em> This experiment continues through the audit phase, where I'm using AI tools to audit AI-generated content about AI tools for information architects. Stay tuned for my next blog post!</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Iterative auditing as a progress tracking mechanism]]></title>
         <id>https://sabitarao.github.io/blog/analysis-paralysis</id>
         <link href="https://sabitarao.github.io/blog/analysis-paralysis"/>
         <updated>2025-11-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[The UX audit returned 18 findings on my Ikigai app (including a critical one that called the app "boring"!)]]></summary>
         <content type="html"><![CDATA[<p>The UX audit returned 18 findings on my Ikigai app (including a critical one that called the app "boring"!)</p>
-<p>Instead of diving into fix-mode right away, I chose to run the remaining audit skills I had built: accessibility, security, and content accuracy, for a complete picture before making any changes.</p>
+<p>Instead of diving into fix-mode right away, I chose to run the remaining audit skills I had built, thinking a complete picture would help before I start making any changes.</p>
 <p>Looking back, this was both a good and a bad decision.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-marie-kondo-approach-to-technical-debt">The Marie Kondo approach to technical debt<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-marie-kondo-approach-to-technical-debt" class="hash-link" aria-label="Direct link to The Marie Kondo approach to technical debt" title="Direct link to The Marie Kondo approach to technical debt" translate="no">​</a></h2>
-<p>A year ago, I Marie Kondo’d my wardrobe and cut my belongings in half. The method worked because I took everything out first and saw exactly what I owned before deciding what to keep. I didn’t declutter one drawer at a time. Instead, I put everything on the floor and sorted it all at once. Seeing everything clearly is how I decided what actually mattered.</p>
-<p>I wanted that same clarity with my audit findings. I planned to run every skill, collect every issue, and see the whole mess before trying to fix anything, maybe even detect overlapping issues, if any. I made sure to document everything in Notion databases so nothing would get lost.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-marie-kondo-approach-to-technical-debt">The Marie Kondo approach to technical debt<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-marie-kondo-approach-to-technical-debt" class="hash-link" aria-label="Direct link to The Marie Kondo approach to technical debt" title="Direct link to The Marie Kondo approach to technical debt" translate="no">​</a></h3>
+<p>A year ago, I <em>Marie Kondo’d</em> my wardrobe and cut my belongings in half. The method worked for me because it made me analyze every single item I owned before deciding what to keep. Realizing the scope clearly is how I decided what actually mattered.</p>
+<p>I wanted that same clarity with my audit findings. I planned to run every skill, collect every issue, and comprehend the scope before trying to fix anything, maybe even detect overlapping issues, if any. I made sure to document everything in Notion databases so nothing would get lost.</p>
 <p>So Claude and I ran the accessibility audit next, then security, then content accuracy. No code review audit as we had generated enough data to work with now!</p>
-<p>The Skills worked really well. Claude designed the Notion databases along with the Skills, and seeing the findings directly filed into separate databases felt like having an expert team review my beginner code. Each audit filled its own database with severity ratings, specific recommendations, and links back to the audit session summaries.</p>
-<p>Then I looked at the totals.</p>
+<p>Claude Skills work like a charm. Claude had designed the Notion databases along with the skills, and seeing the findings directly filed into separate databases felt like having an expert team review my beginner code. Each audit filled its own database with severity ratings, specific recommendations, and links back to the audit session summaries.</p>
+<p>Then I looked at the numbers.</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Total Issues: 87</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─ Content Accuracy: 32 findings</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─ Accessibility: 24 findings  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─ UX/UI: 18 findings (1 critical)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─ Security: 13 findings</span><br></span></code></pre></div></div>
 <p><em><strong>Yikes.</strong></em></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-security-wake-up-call">The security wake-up call<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-security-wake-up-call" class="hash-link" aria-label="Direct link to The security wake-up call" title="Direct link to The security wake-up call" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-security-wake-up-call">The security wake-up call<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-security-wake-up-call" class="hash-link" aria-label="Direct link to The security wake-up call" title="Direct link to The security wake-up call" translate="no">​</a></h3>
 <p>The security audit surfaced something I'd been completely oblivious to while building:</p>
 <blockquote>
 <p>Cross-Site Scripting (XSS) vulnerabilities through unsanitized user input rendered via innerHTML, combined with localStorage data exposure risk across browser users.</p>
 </blockquote>
 <p>Seems obvious now, but as a non-coder building my first web app, I had no idea I was creating security holes. I'd been focused on making the interface aesthetically pleasing while missing fundamental safety issues.</p>
-<p>I've since added a privacy warning to the app, but the finding exposed how much I didn't know about what I didn't know. Having the audit skills surface these gaps felt like gaining a technical reviewer who actually understood the risks I was taking without realizing it.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-paradox-of-good-data">The paradox of good data<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-paradox-of-good-data" class="hash-link" aria-label="Direct link to The paradox of good data" title="Direct link to The paradox of good data" translate="no">​</a></h2>
+<p>I've since added a privacy warning to the app, but the finding exposed how much I didn't know about what I didn't know.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-paradox-of-good-data">The paradox of good data<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-paradox-of-good-data" class="hash-link" aria-label="Direct link to The paradox of good data" title="Direct link to The paradox of good data" translate="no">​</a></h3>
 <p>The problem with systematic AI audits is that they work exactly as designed.</p>
-<p>87 documented issues, each with severity ratings and specific recommendations, organized across four Notion databases with relational links to audit sessions. No ambiguity about what needs fixing. No wondering if I missed something important. Just an overwhelming number of open issues staring back at me.</p>
+<p>87 documented issues, each with severity ratings and specific recommendations, organized across multiple Notion databases. No ambiguity about what needs fixing. No wondering if I missed something important. Just an overwhelming number of open issues staring back at me.</p>
 <p>The same completeness that makes this data valuable makes it paralyzing. Where do you even start when you have 32 content accuracy findings alone?!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-decision-tree">The decision tree<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-decision-tree" class="hash-link" aria-label="Direct link to The decision tree" title="Direct link to The decision tree" translate="no">​</a></h2>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Should I start fixing issues immediately?</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─ YES → Risk missing patterns across audits</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        Risk fixes breaking other things</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        Risk losing track of what changed</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        No version control = no progress history</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─ NO → See the full scope first</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Understand overlaps (UX + Security?)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Plan a methodical approach</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Set up proper tracking before touching code</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Decision: Run all audits first ✓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Result: 87 issues documented</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Current Status: Still figuring out the fix approach</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-im-learning-about-prioritization">What I'm learning about prioritization<a href="https://sabitarao.github.io/blog/analysis-paralysis#what-im-learning-about-prioritization" class="hash-link" aria-label="Direct link to What I'm learning about prioritization" title="Direct link to What I'm learning about prioritization" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="decisions-decisions">Decisions, decisions<a href="https://sabitarao.github.io/blog/analysis-paralysis#decisions-decisions" class="hash-link" aria-label="Direct link to Decisions, decisions" title="Direct link to Decisions, decisions" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Should I start fixing issues immediately?</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─ YES → Risk missing patterns across audits</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        Risk fixes breaking other things</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        Risk losing track of what changed</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│        No version control = no progress history</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─ NO → See the full scope first</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Understand overlaps (UX + Security?)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Plan a methodical approach</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Set up proper tracking before touching code</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Decision: Run all audits first, don't fix issues immediately</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Result: 87 issues documented</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Current Status: Still figuring out how much of the fix approach to automate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-im-learning-about-prioritization">What I'm learning about prioritization<a href="https://sabitarao.github.io/blog/analysis-paralysis#what-im-learning-about-prioritization" class="hash-link" aria-label="Direct link to What I'm learning about prioritization" title="Direct link to What I'm learning about prioritization" translate="no">​</a></h3>
 <p>It's easy to miss the forest for the trees. My technical writing background helps here, though. In documentation, we're often the chosen ones who understand what every part of a system does and how pieces connect. We can't fixate on perfecting one section while ignoring an overall structure that doesn't make sense.</p>
-<p>My plan is to keep a working app at all times, even if it's not the most polished version. Progress over perfection means the app remains functional through iterations, not beautiful, but certainly not broken.</p>
+<p>My plan is to maintain a working app at all times, even if it's not the most polished version. Progress over perfection means the app remains functional through iterations, not beautiful, but certainly not broken.</p>
 <blockquote>
 <p><em><strong>Perfect</strong> is the enemy of <strong>Done</strong>!</em></p>
 </blockquote>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-current-state">The current state<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-current-state" class="hash-link" aria-label="Direct link to The current state" title="Direct link to The current state" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-current-state">The current state<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-current-state" class="hash-link" aria-label="Direct link to The current state" title="Direct link to The current state" translate="no">​</a></h3>
 <p>Those 87 issues in Notion, unfixed, are both motivating and pressure-inducing. I have to remind myself that this is a personal project meant to be fun, that I'm proving AI efficiency to myself, not shipping enterprise software. But the high number of findings does feel like a real-world scenario, and I want to approach this methodically, not just dive in randomly.</p>
-<p>Current rumination: automate a logical system for walking through fixes in order of actual priority, not just whatever catches my eye first.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="github-comes-first">GitHub comes first<a href="https://sabitarao.github.io/blog/analysis-paralysis#github-comes-first" class="hash-link" aria-label="Direct link to GitHub comes first" title="Direct link to GitHub comes first" translate="no">​</a></h2>
+<p>Current rumination: finalize a logical system for walking through fixes in order of actual priority, not in order of whatever catches my eye first. Start collaborating with Claude Code...</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="github-comes-first">GitHub comes first<a href="https://sabitarao.github.io/blog/analysis-paralysis#github-comes-first" class="hash-link" aria-label="Direct link to GitHub comes first" title="Direct link to GitHub comes first" translate="no">​</a></h3>
 <p>Before touching any code, I need version control in place. The app currently exists as a local file on my computer that I keep improving. It's way too easy to lose track of what changed and why.</p>
 <p>This project is specifically about demonstrating how AI helps track improvements through connected tools, like Skills for automated auditing, Notion for issue documentation, and GitHub for code versioning. I want to showcase this progression and measure whether subsequent audits demonstrate actual improvement.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-real-discovery">The <em>real</em> discovery<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-real-discovery" class="hash-link" aria-label="Direct link to the-real-discovery" title="Direct link to the-real-discovery" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-real-discovery">The <em>real</em> discovery<a href="https://sabitarao.github.io/blog/analysis-paralysis#the-real-discovery" class="hash-link" aria-label="Direct link to the-real-discovery" title="Direct link to the-real-discovery" translate="no">​</a></h3>
 <p>I built these audit skills thinking they'd be one-time debugging tools. Run the audit, get the findings, fix the issues, done.</p>
 <p>But documenting 87 issues systematically revealed something more valuable: this isn't a debugging tool, it's a <strong>progress tracking system</strong>.</p>
 <p>When I run the same audits next week, next month, whenever, I'll have objective proof of whether things improved, stagnated, or regressed. No guessing whether changes made things better; I’ll have data showing what shifted and by how much.</p>
 <p>The overwhelm comes from seeing everything at once. The value comes from being able to measure movement over time.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/analysis-paralysis#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/analysis-paralysis#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h3>
 <ol>
 <li class="">Get the Ikigai app into GitHub with proper commit structure. Every fix should be a documented commit so there's a clear history of what changed.</li>
 <li class="">Fix a small batch of issues manually to understand the patterns. Maybe start with the critical security findings, then see what other issues naturally resolve as side effects.</li>
 <li class="">Run the audits again. Compare findings. See if the Claude skills can identify improvements, not just problems.</li>
 </ol>
-<p>The goal isn't to get to zero issues immediately. It is to establish a workflow where progress is visible, measurable, and documented, and where <strong>AI helps track solutions</strong>.</p>]]></content>
+<p>The goal isn't to get to zero issues immediately. It is to establish a workflow where progress is visible, measurable, and documented, and where AI helps <strong>implement and track solutions</strong>.</p>]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Setting up Notion MCP and watching Claude build an audit system]]></title>
+        <title type="html"><![CDATA[Watching Claude build an audit system using Notion MCP]]></title>
         <id>https://sabitarao.github.io/blog/notion-mcp-audits</id>
         <link href="https://sabitarao.github.io/blog/notion-mcp-audits"/>
         <updated>2025-11-08T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security. Each one could analyze the app and generate detailed findings. But the reports existed only as chat artifacts. I wanted them in Notion where I could track fixes, link to GitHub issues, and see progress over time.]]></summary>
-        <content type="html"><![CDATA[<p>I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security. Each one could analyze the app and generate detailed findings. But the reports existed only as chat artifacts. I wanted them in Notion where I could track fixes, link to GitHub issues, and see progress over time.</p>
-<p>I asked Claude to suggest the database structures I'd need in Notion, and it told me I'd need ten: five for audit sessions, five for individual findings, all with proper schemas and relations between them. I manually created one database in Notion to test the concept. Getting every property right - the select options, the number fields, the relations - took focus that would now need to last for ten databases.</p>
-<p>So instead, I set up the initial Notion MCP connection and asked Claude to complete the task.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-setup">The setup<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-setup" class="hash-link" aria-label="Direct link to The setup" title="Direct link to The setup" translate="no">​</a></h2>
+        <summary type="html"><![CDATA[I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security - where each one could analyze the app and generate unique, detailed findings as expert team personas. But the audit reports existed only as chat artifacts, and I wanted them in Notion where I could track fixes, link to GitHub issues, and measure progress over time.]]></summary>
+        <content type="html"><![CDATA[<p>I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security - where each one could analyze the app and generate unique, detailed findings as expert team personas. But the audit reports existed only as chat artifacts, and I wanted them in Notion where I could track fixes, link to GitHub issues, and measure progress over time.</p>
+<p>I asked Claude to suggest the database schemas I'd need in Notion to track audits, and it did; ten databases to start with, five for audit sessions, five for individual findings, all with proper schemas and relations between them.</p>
+<p>I manually created one database in Notion to test the concept. Getting every property right - the select options, the number fields, the relations - took focus that would now need to last for ten databases.</p>
+<p>So instead, I set up the Notion MCP connection and asked Claude to complete the task.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-setup">The setup<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-setup" class="hash-link" aria-label="Direct link to The setup" title="Direct link to The setup" translate="no">​</a></h3>
 <p>I followed <a href="https://developers.notion.com/docs/mcp" target="_blank">Notion's official MCP documentation</a>. After initial hiccups caused by Claude's integration docs, I created a Notion MCP -&gt; Claude integration, got the API key, and added it to Claude Desktop's config file. The authentication part was straightforward.</p>
 <p>Fair warning though, this integration needs refreshing everyday (or maybe that's just Claude being moody?); Claude refuses to sync with Notion when I try to pick up database tasks from where I left off the previous evening. I always rejig the config now before starting a database sync.</p>
 <p>Next, I directed Claude to write a Node.js setup script with checkpoint functionality in case anything failed midway. I needed it to create all ten databases with complete schemas, then link them together with relations. I can't, and didn't have to, write a single line of the setup code!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-moment">The moment!<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-moment" class="hash-link" aria-label="Direct link to The moment!" title="Direct link to The moment!" translate="no">​</a></h2>
-<p>I ran the command, and Claude started creating the databases. I switched to Notion, hit refresh, and ten databases appeared. Each one properly configured: UX Audit Sessions with all its metrics, UX Findings with severity levels and status tracking, Code Quality Sessions, Code Quality Findings, everything.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-moment">The moment!<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-moment" class="hash-link" aria-label="Direct link to The moment!" title="Direct link to The moment!" translate="no">​</a></h3>
+<p>I ran the command, and Claude started creating the databases. I switched to Notion and hit Refresh. Ten databases appeared! Each one properly configured: UX Audit Sessions with all its metrics, UX Findings with severity levels and status tracking, Code Quality Sessions, Code Quality Findings, everything.</p>
 <p>It warranted a little dance!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="running-the-first-audit">Running the first audit<a href="https://sabitarao.github.io/blog/notion-mcp-audits#running-the-first-audit" class="hash-link" aria-label="Direct link to Running the first audit" title="Direct link to Running the first audit" translate="no">​</a></h2>
-<p>I half-expected something to break, or have Claude tell me there's a property mismatch or a missing field, or that some piece of code wasn't working.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="running-the-first-audit">Running the first audit<a href="https://sabitarao.github.io/blog/notion-mcp-audits#running-the-first-audit" class="hash-link" aria-label="Direct link to Running the first audit" title="Direct link to Running the first audit" translate="no">​</a></h3>
+<p>The app's first draft had obvious UX issues that jumped out at me immediately, and I wondered if the UX Auditor Skill would catch the same annoyances.</p>
 <p>I typed:</p>
 <blockquote>
 <p>Use the UX Auditor skill. File: xyz.html. After the audit, save results to Notion.</p>
 </blockquote>
-<p>Claude ran the audit and found 18 UX issues including one critical finding about the app being boring(!). Then it searched for the relevant Notion databases, created an audit session entry, created 18 individual finding entries, linked them all together, and gave me the Notion URLs.</p>
+<p>TBH, I half-expected something to break, or have Claude tell me there's a property mismatch or a missing field, or that some piece of code wasn't working.</p>
+<p>Claude ran the audit and found 18 UX issues including one critical finding about the app being boring(!). The UX Auditor caught every issue that was bugging me at first glance, and then some. The audit was more nuanced than I expected, with detailed severity ratings and specific recommendations.</p>
+<p>Claude then searched for the relevant Notion databases, created an audit session entry, created 18 individual finding entries, linked them all together, and gave me the Notion URLs.</p>
 <p>Just like that.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-two-database-pattern">The two-database pattern<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-two-database-pattern" class="hash-link" aria-label="Direct link to The two-database pattern" title="Direct link to The two-database pattern" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-two-database-pattern">The two-database pattern<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-two-database-pattern" class="hash-link" aria-label="Direct link to The two-database pattern" title="Direct link to The two-database pattern" translate="no">​</a></h3>
 <p>I hadn't immediately understood why Claude created two databases per audit type initially, but it made sense as soon as I looked at the audit data.</p>
 <p>For each skill:</p>
 <ul>
@@ -98,13 +201,16 @@
 </li>
 </ul>
 <p>Sessions link to findings. Findings link back to sessions. You can view either the forest or the trees.</p>
-<p>I ran a second audit, Content Accuracy, and in a matter of minutes, I had thorough content audits to show with trackable issues.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/notion-mcp-audits#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h2>
-<p>The integration works well. I have two audits completed, reports in Notion, ready to track. Now I want to connect this to GitHub, and turn Notion findings into GitHub issues to track completion and link to release notes, etc.</p>
-<p>The audit skills themselves become measurement tools. If I keep the checkers unchanged, running audits at regular intervals gives me an objective progress marker. Fix issues --&gt; run audit again --&gt; compare results = simple tracking!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-learning">The learning<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-learning" class="hash-link" aria-label="Direct link to The learning" title="Direct link to The learning" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-technical-reality-check">The (technical) reality check<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-technical-reality-check" class="hash-link" aria-label="Direct link to The (technical) reality check" title="Direct link to The (technical) reality check" translate="no">​</a></h3>
+<p>I ran the Content Accuracy Checker skill to see if I’d just gotten lucky with the first audit or if this was a working idea. It was, to an extent, beginner’s luck. While the audit ran great and Claude managed to publish everything to Notion, we hit a technical issue toward the end, and the chat timed out. My Claude chat history has no record of those Content Accuracy findings!</p>
+<p>This made me think about all the previous instances where I've lost entire chats because Claude timed out or hit context limits. Maybe writing Claude outputs to a linked external database should be the norm for any work?</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/notion-mcp-audits#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h3>
+<p>The integration works well. I have two audits completed with reports in Notion, ready to track. I want to turn Notion findings into GitHub issues now to track completion and link to release notes, etc.</p>
+<p>The audit skills themselves could become measurement tools. If I keep the check parameters unchanged, running audits at regular intervals could give me an objective progress marker.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Fix issues --&gt; run audit again --&gt; compare results = simple tracking!</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-learning">The learning<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-learning" class="hash-link" aria-label="Direct link to The learning" title="Direct link to The learning" translate="no">​</a></h3>
 <p>I now know to keep my requests to Claude simple. The clearer and more direct the task, the better the results. No need to overthink the prompts.</p>
-<p>This wasn't about me writing clever code or complex prompts. It was about Claude understanding the structure I needed and building it correctly. The manual work I'd done on that first database taught me what properties mattered. But scaling that to ten databases with relations, the setup script, the database schemas, the Notion integration, the audit execution was all Claude.</p>
+<p>This wasn't about me writing clever code or complex prompts. It was about Claude understanding the schemas needed and building them correctly. The manual work I'd done on that first database taught me what properties mattered. But scaling that to ten databases with relations, the setup script, the database schemas, the Notion integration, the audit execution was all Claude.</p>
 <p>MCP FTW!</p>
 <p>Here are snapshots of the Notion audits:</p>
 <p><img decoding="async" loading="lazy" alt="ux-audit" src="https://sabitarao.github.io/assets/images/ux-audit-c5b9744afd841d0aae60d1e7b9258bc5.png" width="1772" height="1007" class="img_ev3q"></p>
@@ -124,13 +230,13 @@
         <content type="html"><![CDATA[<p>AI and I built an interactive web app from a PDF, with drag-and-drop, auto-save, and an interactive five-step workflow, in a week! (I'm thrilled about how well it works too!)</p>
 <p>This project was about converting a PDF (and complex philosophical concepts) into intuitive user experiences while leveraging GitHub Copilot and Claude for rapid prototyping and problem-solving.</p>
 <p>I'm documenting what I've learned about collaborating with AI to build something real.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-ikigai">Why Ikigai<a href="https://sabitarao.github.io/blog/diving-into-ai#why-ikigai" class="hash-link" aria-label="Direct link to Why Ikigai" title="Direct link to Why Ikigai" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-ikigai">Why Ikigai<a href="https://sabitarao.github.io/blog/diving-into-ai#why-ikigai" class="hash-link" aria-label="Direct link to Why Ikigai" title="Direct link to Why Ikigai" translate="no">​</a></h3>
 <p>I first learnt about “Ikigai” in the book <em>'Ikigai: The Japanese Secret to a Long and Happy Life' by Francesc Miralles and Hector Garcia</em>. Although I later discovered that the book, as well as the Positive Psychology PDF that this app is is based on, are nothing like the actual Japanese concept; they’re more a cultural appropriation of the eastern philosophy.
 <img decoding="async" loading="lazy" alt="Ikigai venn diagram" src="https://sabitarao.github.io/assets/images/ikigai-25af589ea0ae58f9f34f612e80846874.png" width="570" height="579" class="img_ev3q"></p>
 <p>That said, I find the framework insightful. The guided process of exploring passion, mission, vocation, and profession resonates with me, and I do think people could benefit from it as an interactive tool.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-fear">The fear<a href="https://sabitarao.github.io/blog/diving-into-ai#the-fear" class="hash-link" aria-label="Direct link to The fear" title="Direct link to The fear" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-fear">The fear<a href="https://sabitarao.github.io/blog/diving-into-ai#the-fear" class="hash-link" aria-label="Direct link to The fear" title="Direct link to The fear" translate="no">​</a></h3>
 <p>My biggest concern isn’t failure. It is not knowing how to handle AI-generated code if something goes wrong. If the code breaks or becomes messy, I wouldn't know where to begin fixing it. I've learned though, that the trick to working with AI is to build piece-by-piece, test frequently, and catch problems early.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-prompt">First prompt<a href="https://sabitarao.github.io/blog/diving-into-ai#first-prompt" class="hash-link" aria-label="Direct link to First prompt" title="Direct link to First prompt" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-prompt">First prompt<a href="https://sabitarao.github.io/blog/diving-into-ai#first-prompt" class="hash-link" aria-label="Direct link to First prompt" title="Direct link to First prompt" translate="no">​</a></h3>
 <p>I started with:</p>
 <blockquote>
 <p><em><strong>I am building an Ikigai web-app based on the Ikigai PDF. Analyze the attached files and list the top improvements you would make to have a fully-functional, highly modern, well-designed interactive app that helps the reader find their Ikigai.
@@ -140,7 +246,7 @@ Do not skim over or lose the details in the PDF.
 <br><br>Ask me questions on the intended behaviour, design, purpose, etc of the app until you have enough information for your research and analysis.</strong></em></p>
 </blockquote>
 <p>This prompt set the tone for everything. I established boundaries, provided constraints, and requested collaboration. It was a framework for how I wanted to work with AI.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-clicked">What clicked<a href="https://sabitarao.github.io/blog/diving-into-ai#what-clicked" class="hash-link" aria-label="Direct link to What clicked" title="Direct link to What clicked" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-clicked">What clicked<a href="https://sabitarao.github.io/blog/diving-into-ai#what-clicked" class="hash-link" aria-label="Direct link to What clicked" title="Direct link to What clicked" translate="no">​</a></h3>
 <p>Prompt engineering felt abstract until I started practicing it. Prompts that clicked:</p>
 <ul>
 <li class=""><strong>Few-shot prompts</strong>: Showing examples helped Claude understand my expectations better than lengthy explanations.</li>
@@ -148,13 +254,13 @@ Do not skim over or lose the details in the PDF.
 <li class=""><strong>Outline expansion prompts</strong>: Starting with a simple structure and expanding section by section kept things manageable.</li>
 <li class=""><strong>Flipped interaction prompts</strong>: Instead of telling Claude what to do, I'd ask it to interview me about my goals. This made the collaboration feel more like partnership.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-like-about-the-app">What I like about the app<a href="https://sabitarao.github.io/blog/diving-into-ai#what-i-like-about-the-app" class="hash-link" aria-label="Direct link to What I like about the app" title="Direct link to What I like about the app" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-like-about-the-app">What I like about the app<a href="https://sabitarao.github.io/blog/diving-into-ai#what-i-like-about-the-app" class="hash-link" aria-label="Direct link to What I like about the app" title="Direct link to What I like about the app" translate="no">​</a></h3>
 <ul>
 <li class="">Step 2: Guides users through questions about what they love, what they're good at, what the world needs, and what they can be paid for. The UI provides thoughtful prompts and self-reflective questions for each circle.</li>
 <li class="">Step 3: Find overlapping responses, where users identify which responses fit into multiple circles, and overlaps reveal patterns.</li>
 </ul>
 <p>These steps feel deeply insightful. They're also the pages I plan to make more “mine” as the project evolves.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/diving-into-ai#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/diving-into-ai#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h3>
 <p>Now that Phase 1 is complete, here's the plan:</p>
 <ol>
 <li class="">
@@ -177,12 +283,12 @@ Do not skim over or lose the details in the PDF.
 </ul>
 </li>
 </ol>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="frustrations-and-challenges">Frustrations and Challenges<a href="https://sabitarao.github.io/blog/diving-into-ai#frustrations-and-challenges" class="hash-link" aria-label="Direct link to Frustrations and Challenges" title="Direct link to Frustrations and Challenges" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="frustrations-and-challenges">Frustrations and challenges<a href="https://sabitarao.github.io/blog/diving-into-ai#frustrations-and-challenges" class="hash-link" aria-label="Direct link to Frustrations and challenges" title="Direct link to Frustrations and challenges" translate="no">​</a></h3>
 <p>Claude routinely generated code for alternate files without me asking for them. Sometimes even after I specifically told it not to, it would create new artifacts when all I needed was iterations on what we had.</p>
 <p>I learned to use Claude Projects and project descriptions to set persistent context, and used universal settings to remind Claude of my working style. I even reset the chat a few times to get back on track. This wasn't Claude being bad; it was me learning how to communicate better.</p>
 <p>I couldn't get the Notion MCP working initially because of conflicting setup info from both Claude and Notion - the documentation didn't align and I hit a wall. I have a similar challenge ahead: integrating with GitHub MCP to make app updates trackable through versions.</p>
 <p>I'm also about to run audit skills on the app for UX, accessibility, security, code quality, and content accuracy, and the resulting number of issues might get overwhelming.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ive-learned">What I've learned<a href="https://sabitarao.github.io/blog/diving-into-ai#what-ive-learned" class="hash-link" aria-label="Direct link to What I've learned" title="Direct link to What I've learned" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ive-learned">What I've learned<a href="https://sabitarao.github.io/blog/diving-into-ai#what-ive-learned" class="hash-link" aria-label="Direct link to What I've learned" title="Direct link to What I've learned" translate="no">​</a></h3>
 <p>I'm excited at having gotten this far! With AI, I just have to think an idea through and choose my prompts.
 My top takeaways:</p>
 <ol>
@@ -194,7 +300,7 @@ My top takeaways:</p>
 <li class="">Expect frustration; AI will misunderstand you, and you'll reset chats. That's part of the process!</li>
 <li class="">Training in prompt engineering helped me a lot. I highly recommend the entire series by Prof Jules White, Vanderbilt University on Coursera.</li>
 </ol>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-this-matters">Why this matters<a href="https://sabitarao.github.io/blog/diving-into-ai#why-this-matters" class="hash-link" aria-label="Direct link to Why this matters" title="Direct link to Why this matters" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-this-matters">Why this matters<a href="https://sabitarao.github.io/blog/diving-into-ai#why-this-matters" class="hash-link" aria-label="Direct link to Why this matters" title="Direct link to Why this matters" translate="no">​</a></h3>
 <p>I enjoy research and problem solving. I haven't pinpointed my mission or even my <em>ikigai</em> yet, but I do enjoy the learning that came with building this app.
 And maybe that's just it!</p>]]></content>
     </entry>
