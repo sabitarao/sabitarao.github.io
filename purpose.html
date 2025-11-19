@@ -775,6 +775,136 @@ h1 {
         padding: 10px;
     }
 }
+
+/* Custom Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    max-width: 500px;
+    width: 90%;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.custom-modal.active {
+    display: block;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.custom-modal-content {
+    padding: 2rem;
+}
+
+.custom-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--zen-text);
+    margin-bottom: 1rem;
+}
+
+.custom-modal-message {
+    color: var(--zen-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.custom-modal-input-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.custom-modal-input {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--zen-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.custom-modal-input:focus {
+    outline: none;
+    border-color: var(--zen-primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+.custom-modal-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.custom-modal-buttons button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.modal-btn-primary {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8960 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+.modal-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.3);
+}
+
+.modal-btn-secondary {
+    background: white;
+    color: var(--zen-primary);
+    border: 2px solid var(--zen-primary);
+}
+
+.modal-btn-secondary:hover {
+    background: var(--zen-background);
+}
+
+.modal-btn-tertiary {
+    background: #f5f5f5;
+    color: var(--zen-text-secondary);
+}
+
+.modal-btn-tertiary:hover {
+    background: #e5e5e5;
+}
     </style>
 </head>
 <body>
@@ -789,7 +919,7 @@ h1 {
         <div class="p-6">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-xl font-bold">💾 Saved Sessions</h3>
-                <button onclick="closeSidebar()" class="text-2xl hover:text-orange-500">&times;</button>
+                <button onclick="closeSidebar()" class="text-2xl hover:text-orange-500" aria-label="Close saved sessions sidebar">&times;</button>
             </div>
             
             <button onclick="saveCurrentSession()" class="zen-button w-full mb-4">
@@ -808,7 +938,7 @@ h1 {
         <div class="prompt-sidebar-header">
             <div class="flex justify-between items-center mb-2">
                 <h3 class="text-xl font-bold">💡 Reflection Prompts</h3>
-                <button onclick="closePromptSidebar()" class="text-2xl">&times;</button>
+                <button onclick="closePromptSidebar()" class="text-2xl" aria-label="Close reflection prompts sidebar">&times;</button>
             </div>
             <p class="text-sm text-gray-600" id="promptSubtitle">Let these questions guide your reflection</p>
         </div>
@@ -822,10 +952,10 @@ h1 {
     <div class="min-h-screen p-4 main-content">
         <!-- Top Bar -->
         <div class="max-w-6xl mt-8 mx-auto mb-4 flex justify-between items-center">
-            <button onclick="openSidebar()" class="zen-button secondary icon">
+            <button onclick="openSidebar()" class="zen-button secondary icon" aria-label="Open saved sessions">
                 💾 Sessions
             </button>
-            <button onclick="resetApp()" class="zen-button secondary icon">
+            <button onclick="resetApp()" class="zen-button secondary icon" aria-label="Start a new journey">
                 🔄 Start Over
             </button>
         </div>
@@ -841,7 +971,205 @@ h1 {
         ✓ Progress saved
     </div>
 
+    <!-- Custom Modal -->
+    <div class="modal-overlay" id="customModalOverlay" onclick="closeCustomModal()"></div>
+    <div class="custom-modal" id="customModal">
+        <div class="custom-modal-content">
+            <h3 class="custom-modal-title" id="modalTitle"></h3>
+            <p class="custom-modal-message" id="modalMessage"></p>
+            <div class="custom-modal-input-wrapper" id="modalInputWrapper" style="display: none;">
+                <input type="text" class="custom-modal-input" id="modalInput">
+            </div>
+            <div class="custom-modal-buttons" id="modalButtons"></div>
+        </div>
+    </div>
+
     <script>
+        // Constants
+        const CIRCLES = {
+            LOVE: 'love',
+            NEEDS: 'needs',
+            PAID_FOR: 'paid_for',
+            GOOD_AT: 'good_at'
+        };
+
+        const OVERLAP_TYPES = {
+            PASSION: 'passion',
+            MISSION: 'mission',
+            PROFESSION: 'profession',
+            VOCATION: 'vocation',
+            IKIGAI: 'ikigai'
+        };
+
+        const CIRCLE_LABELS = {
+            love: 'What You Love',
+            needs: 'What the World Needs',
+            paid_for: 'What You Can Be Paid For',
+            good_at: 'What You Are Good At'
+        };
+
+        const CONFIG = {
+            TOOLTIP_TIMEOUT: 5000,
+            SAVE_DEBOUNCE_MS: 500,
+            AUTOFOCUS_DELAY: 50
+        };
+
+        // Security: XSS Protection Utility
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Utility: Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Utility: Memoization function
+        function memoize(func) {
+            const cache = new Map();
+            return function(...args) {
+                const key = JSON.stringify(args);
+                if (cache.has(key)) {
+                    return cache.get(key);
+                }
+                const result = func.apply(this, args);
+                cache.set(key, result);
+                return result;
+            };
+        }
+
+        // DOM Cache for performance
+        const domCache = {
+            _cache: {},
+            get(id) {
+                if (!this._cache[id]) {
+                    this._cache[id] = document.getElementById(id);
+                }
+                return this._cache[id];
+            },
+            clear() {
+                this._cache = {};
+            }
+        };
+
+        // Custom Modal Functions
+        function showModal(options) {
+            const overlay = document.getElementById('customModalOverlay');
+            const modal = document.getElementById('customModal');
+            const title = document.getElementById('modalTitle');
+            const message = document.getElementById('modalMessage');
+            const inputWrapper = document.getElementById('modalInputWrapper');
+            const input = document.getElementById('modalInput');
+            const buttons = document.getElementById('modalButtons');
+
+            title.textContent = options.title || '';
+            message.textContent = options.message || '';
+
+            // Handle input field
+            if (options.input) {
+                inputWrapper.style.display = 'block';
+                input.value = '';
+                input.placeholder = options.placeholder || '';
+                setTimeout(() => input.focus(), 100);
+            } else {
+                inputWrapper.style.display = 'none';
+            }
+
+            // Handle buttons
+            buttons.innerHTML = '';
+            (options.buttons || []).forEach(btn => {
+                const button = document.createElement('button');
+                button.textContent = btn.text;
+                button.className = btn.class || 'modal-btn-primary';
+                button.onclick = () => {
+                    if (btn.onClick) {
+                        const value = options.input ? input.value : null;
+                        btn.onClick(value);
+                    }
+                    if (btn.closeOnClick !== false) {
+                        closeCustomModal();
+                    }
+                };
+                buttons.appendChild(button);
+            });
+
+            overlay.classList.add('active');
+            modal.classList.add('active');
+        }
+
+        function closeCustomModal() {
+            const overlay = document.getElementById('customModalOverlay');
+            const modal = document.getElementById('customModal');
+            overlay.classList.remove('active');
+            modal.classList.remove('active');
+        }
+
+        // Helper: Show Alert Modal
+        function showAlert(title, message, callback) {
+            showModal({
+                title: title,
+                message: message,
+                buttons: [{
+                    text: 'OK',
+                    class: 'modal-btn-primary',
+                    onClick: callback
+                }]
+            });
+        }
+
+        // Helper: Show Confirm Modal
+        function showConfirm(title, message, onConfirm, onCancel) {
+            showModal({
+                title: title,
+                message: message,
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        class: 'modal-btn-tertiary',
+                        onClick: onCancel
+                    },
+                    {
+                        text: 'Confirm',
+                        class: 'modal-btn-primary',
+                        onClick: onConfirm
+                    }
+                ]
+            });
+        }
+
+        // Helper: Show Input Modal
+        function showPrompt(title, message, placeholder, onSubmit, onCancel) {
+            showModal({
+                title: title,
+                message: message,
+                input: true,
+                placeholder: placeholder,
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        class: 'modal-btn-tertiary',
+                        onClick: onCancel
+                    },
+                    {
+                        text: 'Save',
+                        class: 'modal-btn-primary',
+                        onClick: onSubmit
+                    }
+                ]
+            });
+        }
+
         // Application State
         const appState = {
             currentStep: 1,
@@ -871,6 +1199,68 @@ h1 {
             }
         };
 
+        // State Management Helper Functions
+        const StateManager = {
+            setAnswer(circle, index, value) {
+                if (appState.answers[circle] && index >= 0 && index < appState.answers[circle].length) {
+                    appState.answers[circle][index] = value;
+                    saveState();
+                }
+            },
+
+            addAnswer(circle, value = '') {
+                if (appState.answers[circle]) {
+                    appState.answers[circle].push(value);
+                    saveState();
+                }
+            },
+
+            removeAnswer(circle, index) {
+                if (appState.answers[circle] && index >= 0 && index < appState.answers[circle].length) {
+                    appState.answers[circle].splice(index, 1);
+                    saveState();
+                }
+            },
+
+            addToOverlap(type, item) {
+                if (appState.overlaps[type] && !appState.overlaps[type].includes(item)) {
+                    appState.overlaps[type].push(item);
+                    saveState();
+                }
+            },
+
+            removeFromOverlap(type, item) {
+                if (appState.overlaps[type]) {
+                    appState.overlaps[type] = appState.overlaps[type].filter(i => i !== item);
+                    saveState();
+                }
+            },
+
+            addToIkigai(item) {
+                if (!appState.ikigai.includes(item)) {
+                    appState.ikigai.push(item);
+                    saveState();
+                }
+            },
+
+            removeFromIkigai(item) {
+                appState.ikigai = appState.ikigai.filter(i => i !== item);
+                saveState();
+            },
+
+            setReflection(key, value) {
+                appState.step5Reflections[key] = value;
+                saveState();
+            },
+
+            setCurrentStep(step) {
+                if (step >= 1 && step <= 6) {
+                    appState.currentStep = step;
+                    saveState();
+                }
+            }
+        };
+
         // PDF Text Content (Verbatim from PDF)
         const PDF_CONTENT = {
             intro: {
@@ -885,21 +1275,21 @@ h1 {
             },
             step2: {
                 title: "Step 2: Filling in your purpose chart",
-                intro: "This is an ongoing process of self-reflection. Your purpose is likely to change with your circumstances over time, so practice this exercise often to explore different possibilities.\n\nIn each circle, take a few minutes to think about each question, and enter any words, phrases, and ideas that are relevant to you.",
+                intro: "This is an ongoing process of self-reflection. Your purpose is likely to change with your circumstances over time, so revisit this exercise every 6-12 months to explore different possibilities as you grow.\n\nIn each circle, take a few minutes to think about each question, and enter any words, phrases, and ideas that are relevant to you.",
                 love: {
-                    title: "Circle 1. What are you passionate about?",
+                    title: "What You Love",
                     text: "Think of the things you love in any aspect of life: your work, your family, volunteer activities, or personal interests and hobbies, for example."
                 },
                 needs: {
-                    title: "Circle 2. What can you give to the world?",
+                    title: "What the World Needs",
                     text: "As social beings, we thrive when we are needed; we feel useful, valuable, and full of purpose. What product or service can you offer that you think your friends, family, and immediate community need? Even helping one single person counts!"
                 },
                 paid_for: {
-                    title: "Circle 3. What specific skills could make you money?",
+                    title: "What You Can Be Paid For",
                     text: "A job where you can apply your talents, share your passion, and get paid for is the foundation for a happier, more fulfilling life. Consider your previous employment positions: What were you good at? Did you excel at anything in particular when employed in those roles?"
                 },
 good_at: {
-                    title: "Circle 4. What are your talents and skills?",
+                    title: "What You Are Good At",
                     text: "Think about your skills, your strengths, and all the things you are capable of doing well, no matter how big or small. It could be something that comes naturally to you, that people find helpful, or that you have worked hard to achieve."
                 }
             },
@@ -908,23 +1298,23 @@ good_at: {
                 text: "Now that you have spent some time thinking and writing down your responses, you might notice that some of your answers appear in multiple circles of your ikigai chart or that some answers are closely related. For instance, if you love teaching (what you love) and you believe the world would benefit from more knowledge (what the world needs), there is a clear overlap between these two. In this step, you will look for similarities between the answers in each of the four circles. These overlapping areas will help you find your ikigai.\n\nAny responses that fit into more than one of two adjacent circles should be written in the overlapping section that lies in between these two circles. For instance, if a response appears in the circle 'what you love' and also in the circle 'what the world needs,' then write this response in the overlapping space between the two circles labeled 'your mission.' Fill in the remaining sections of your ikigai chart in the same way.\n\nWrite any response that fits into all four circles in the center of your ikigai chart. This response is your key to a more fulfilling and meaningful life.",
                 definitions: {
                     passion: {
-                        title: "What you love + what you are good at = your passion",
+                        title: "What you love + what you are good at = Your Passion",
                         text: "If any item listed in 'what you love' also appears in 'what you are good at,' then you have found your passion. When activities fall into these two categories, you might experience a feeling of satisfaction, but you might also feel that you are not contributing as much to the world as you could. Importantly, no matter how passionate you are about something, if you receive no financial reward for it, it is not sustainable in the long term."
                     },
                     mission: {
-                        title: "What you love + what the world needs = your mission",
+                        title: "What you love + what the world needs = Your Mission",
                         text: "If any item listed in 'what you love' also appears in 'what the world needs,' then you have found your mission. When activities fall into these two categories, you are likely to experience delight and fullness, but you are also likely to notice a distinct absence of income and financial stability."
                     },
                     profession: {
-                        title: "What you are good at + what you can be paid for = your profession",
+                        title: "What you are good at + what you can be paid for = Your Profession",
                         text: "If any item listed in 'what you are good at' also appears in 'what you can be paid for,' then you have found your profession. You might feel comfortable during these activities; however, doing something that you do not love and that the world does not need can make your work and efforts feel trivial."
                     },
                     vocation: {
-                        title: "What you can be paid for + what the world needs = your vocation",
+                        title: "What you can be paid for + what the world needs = Your Vocation",
                         text: "If any item listed in 'what you can be paid for' also appears in 'what the world needs,' then you have found your vocation. These activities can have a positive influence on the world and have the bonus of providing an income. However, not being good at your job can create anxiety, and without love for what you are doing, the experience can feel empty and unfulfilling."
                     },
                     ikigai: {
-                        title: "All four circles = Your ikigai",
+                        title: "All four circles = Your Ikigai",
                         text: "Does something appear in all four circles? When any response appears in what you love, what you're good at, what you can be paid for, and what the world needs, you have found your ikigai. Discovering your ikigai means that you have found something that is meaningful, fulfilling, and sustainable."
                     }
                 }
@@ -951,7 +1341,7 @@ good_at: {
                     ]
                 },
                 good_at: {
-                    title: "Sometimes, you must commit time and effort to enhance your skills, techniques, and knowledge to enjoy a particular activity.",
+                    title: "You may need to commit time and effort to enhance your skills, techniques, and knowledge to truly enjoy a particular activity.",
                     intro: "",
                     questions: [
                         "Why do you think you are not good at this activity?",
@@ -1031,7 +1421,7 @@ good_at: {
 "What skills or activities have you devoted significant time to practicing or learning?",
 "What skills or parts of your work come most naturally or easily to you?",
 "What talents or activities do you excel at naturally, the ones others notice too?",
-"What do people often seek your help or praise you for?",
+"What do people frequently ask you for help with?",
 "What achievements or recognitions are you most proud of?",
 "What skills would you love to develop further, and does that excite you?",
 "If you had to teach something, what would you teach?",
@@ -1052,11 +1442,18 @@ function initApp() {
 }
         // Render Current Step
         function render() {
-            const content = document.getElementById('appContent');
-            
+            const content = domCache.get('appContent');
+            if (!content) {
+                console.error('appContent element not found');
+                return;
+            }
+
+            // Clear DOM cache on re-render since elements will be recreated
+            domCache.clear();
+
             // Render sticky progress bar
             renderStickyProgress();
-            
+
             switch(appState.currentStep) {
                 case 1:
                     content.innerHTML = renderIntro();
@@ -1157,20 +1554,22 @@ function renderIkigaiDiagram() {
         // Render Sticky Progress Bar
         function renderStickyProgress() {
             const steps = [
-                { num: 1, label: 'Intro' },
-                { num: 2, label: 'Circles' },
-                { num: 3, label: 'Convergences' },
-                { num: 4, label: 'Missing' },
-                { num: 5, label: 'Reflect' },
-                { num: 6, label: 'Results' }
+                { num: 1, label: 'Welcome' },
+                { num: 2, label: 'Your Circles' },
+                { num: 3, label: 'Find Convergences' },
+                { num: 4, label: 'Explore Gaps' },
+                { num: 5, label: 'Reflect Deeply' },
+                { num: 6, label: 'Your Insights' }
             ];
-            
-            const progressSteps = document.getElementById('progressSteps');
+
+            const progressSteps = domCache.get('progressSteps');
+            if (!progressSteps) return;
+
             progressSteps.innerHTML = steps.map((step, index) => {
                 const isActive = appState.currentStep === step.num;
                 const isCompleted = appState.currentStep > step.num;
                 const showLine = index < steps.length - 1;
-                
+
                 return `
                     <div class="progress-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}">
                         <div class="progress-dot ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}"></div>
@@ -1268,7 +1667,7 @@ function renderIkigaiDiagram() {
                                             <div class="progress-circle ${dot < count ? 'filled' : ''}"></div>
                                         `).join('')}
                                     </div>
-                                    <div class="progress-text mt-1 ${progress.status === 'good' || progress.status === 'great' ? 'good' : progress.status === 'partial' ? 'partial' : ''}">${count} responses - ${progress.text}</div>
+                                    <div class="progress-text mt-1 ${progress.status === 'good' || progress.status === 'great' ? 'good' : progress.status === 'partial' ? 'partial' : ''}">${count} ${count === 1 ? 'response' : 'responses'} added - ${progress.text}</div>
                                 </button>
                             `;
                         }).join('')}
@@ -1291,7 +1690,7 @@ function renderIkigaiDiagram() {
 
                         ${appState.answers[currentCircle].length === 0 ? `
                             <div class="empty-state mb-4 cursor-pointer hover:border-orange-300 transition-colors" onclick="addAnswerField('${currentCircle}', true)" style="cursor: pointer;">
-                                <p class="text-gray-600 mb-0">No responses yet. Tap here to get started!</p>
+                                <p class="text-gray-600 mb-0">Take a moment to reflect. Tap here when you're ready to share your thoughts.</p>
                             </div>
                         ` : ''}
 
@@ -1299,14 +1698,14 @@ function renderIkigaiDiagram() {
                             ${appState.answers[currentCircle].map((answer, i) => `
                                 <div class="flex gap-2">
                                     <div class="flex-1">
-                                        <textarea 
+                                        <textarea
                                             class="zen-textarea"
                                             data-circle="${currentCircle}"
                                             data-index="${i}"
-                                        >${answer}</textarea>
-                                        <p class="input-helper">Press Enter to add another response</p>
+                                        >${escapeHtml(answer)}</textarea>
+                                        <p class="input-helper">💡 Tip: Press Enter to save and add another response field</p>
                                     </div>
-                                    <button onclick="removeAnswer('${currentCircle}', ${i})" class="text-red-500 px-4 hover:text-red-700">×</button>
+                                    <button onclick="removeAnswer('${currentCircle}', ${i})" class="text-red-500 px-4 hover:text-red-700" aria-label="Remove response">×</button>
                                 </div>
                             `).join('')}
                         </div>
@@ -1338,13 +1737,23 @@ function renderIkigaiDiagram() {
         function setupStep2Handlers() {
             // Setup Enter key handling for all textareas
             const textareas = document.querySelectorAll('.zen-textarea');
+
+            if (!textareas || textareas.length === 0) {
+                console.warn('No textareas found in setupStep2Handlers');
+                return;
+            }
+
             textareas.forEach(textarea => {
+                if (!textarea) return;
+
                 // Handle input to update state
                 textarea.addEventListener('input', function() {
                     const circle = this.dataset.circle;
                     const index = parseInt(this.dataset.index);
-                    updateAnswer(circle, index, this.value);
-                    
+                    if (circle && !isNaN(index)) {
+                        updateAnswer(circle, index, this.value);
+                    }
+
                     // Auto-resize
                     autoResizeTextarea(this);
                 });
@@ -1353,13 +1762,15 @@ function renderIkigaiDiagram() {
                 textarea.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
-                        
+
                         const circle = this.dataset.circle;
                         const index = parseInt(this.dataset.index);
-                        
+
+                        if (!circle || isNaN(index)) return;
+
                         // Save current value
                         updateAnswer(circle, index, this.value);
-                        
+
                         // Add new field and focus it
                         addAnswerField(circle, true);
                     }
@@ -1417,20 +1828,27 @@ function renderIkigaiDiagram() {
             
             document.getElementById('promptSubtitle').textContent = circleNames[circle];
             document.getElementById('promptSidebarBody').innerHTML = `
+                <div class="info-box mb-4" style="background: #fff3cd; border-color: #ffc107;">
+                    <span>💡</span>
+                    <div>
+                        <strong>How these prompts help:</strong>
+                        <p class="text-sm mt-1">Feeling stuck? These prompts help you explore different angles and uncover deeper insights. You can skip any that don't resonate or return anytime for fresh inspiration.</p>
+                    </div>
+                </div>
                 <div class="prompt-card">
                     <div class="prompt-progress">
                         Prompt ${currentIndex + 1} of ${prompts.length}
                     </div>
                     <div class="prompt-question">${currentPrompt}</div>
-                    <textarea 
-                        id="promptResponse" 
-                        class="zen-textarea" 
-                        rows="6" 
-                        placeholder="Take your time to reflect deeply!"
+                    <textarea
+                        id="promptResponse"
+                        class="zen-textarea"
+                        rows="6"
+                        placeholder="There are no wrong answers—share what feels true to you..."
                     ></textarea>
                     <div class="prompt-actions">
                         <button onclick="skipPrompt()" class="zen-button secondary small">
-                            Skip
+                            Skip Question
                         </button>
                         <button onclick="saveAndNextPrompt()" class="zen-button small">
                             Save & Next →
@@ -1440,7 +1858,7 @@ function renderIkigaiDiagram() {
                 
                 <div class="text-center mt-4">
                     <button onclick="closePromptSidebar()" class="text-sm text-gray-600 hover:text-gray-800">
-                        Exit Guide
+                        Close
                     </button>
                 </div>
             `;
@@ -1489,14 +1907,13 @@ function renderIkigaiDiagram() {
         }
 
         function updateAnswer(circle, index, value) {
-            appState.answers[circle][index] = value;
-            saveState();
+            StateManager.setAnswer(circle, index, value);
         }
 
         function addAnswerField(circle, autoFocus = false) {
-            appState.answers[circle].push('');
+            StateManager.addAnswer(circle, '');
             render();
-            
+
             if (autoFocus) {
                 // Focus the newly created textarea
                 setTimeout(() => {
@@ -1505,13 +1922,12 @@ function renderIkigaiDiagram() {
                     if (newTextarea) {
                         newTextarea.focus();
                     }
-                }, 50);
+                }, CONFIG.AUTOFOCUS_DELAY);
             }
         }
 
         function removeAnswer(circle, index) {
-            appState.answers[circle].splice(index, 1);
-            saveState();
+            StateManager.removeAnswer(circle, index);
             render();
         }
 
@@ -1528,16 +1944,28 @@ function renderIkigaiDiagram() {
         function completeStep2() {
             // Clean up empty responses
             Object.keys(appState.answers).forEach(key => {
-                appState.answers[key] = appState.answers[key].filter(a => a.trim() !== '');
+                appState.answers[key] = appState.answers[key].filter(a => a && a.trim() !== '');
             });
-            
-            if (Object.values(appState.answers).every(arr => arr.length > 0)) {
+
+            // Check which circles are empty
+            const emptyCircles = [];
+            Object.entries(appState.answers).forEach(([circle, answers]) => {
+                if (!answers || answers.length === 0) {
+                    emptyCircles.push(CIRCLE_LABELS[circle]);
+                }
+            });
+
+            if (emptyCircles.length === 0) {
                 appState.currentStep = 3;
                 appState.step2CurrentCircle = 0;
                 saveState();
                 render();
             } else {
-                alert('Please add at least one response to each circle before continuing.');
+                const circleList = emptyCircles.join(', ');
+                showAlert(
+                    'Let\'s Complete These Circles',
+                    `Each circle helps build your complete ikigai picture. Please add responses to: ${circleList}. Take your time to reflect on each question.`
+                );
             }
         }
 
@@ -1554,9 +1982,16 @@ function renderIkigaiDiagram() {
             return `
                 <div class="zen-card max-w-6xl mx-auto">
                     <h2 class="action-header">${PDF_CONTENT.step3.title}</h2>
-                    <p class="instruction mb-6">
-    Look for responses that appear in multiple circles and drag them manually to the converging zones.
-</p>
+                    <p class="instruction mb-4">
+                        Now that you have spent some time thinking and writing down your responses, you might notice that some of your answers appear in multiple circles of your ikigai chart. Look for similarities between the answers in each of the four circles.
+                    </p>
+                    <div class="info-box mb-6">
+                        <span>💡</span>
+                        <div>
+                            <strong>What are convergences?</strong>
+                            <p class="text-sm mt-1">Convergences (or overlaps) are items that fit into more than one circle. For example, if you love teaching AND you're good at it, that's a convergence! These overlapping areas help reveal your passions, mission, profession, vocation, and ultimately your ikigai.</p>
+                        </div>
+                    </div>
 
                     <div class="grid md:grid-cols-2 gap-8 mb-8">
                         <!-- Source Responses -->
@@ -1564,26 +1999,28 @@ function renderIkigaiDiagram() {
     <div class="flex justify-between items-center mb-4">
         <h3 class="font-bold text-lg">Your Responses</h3>
     </div>
+    <p class="text-sm text-gray-600 mb-3">💡 Drag items from here into the converging zones on the right that best match them.</p>
                             
                             <div class="space-y-4">
                                 ${renderSourceCircle('love', '❤️ What You Love', '#6b6b6b')}
                                 ${renderSourceCircle('needs', '🌍 What the World Needs', '#6b6b6b')}
                                 ${renderSourceCircle('paid_for', '💰 What You Can Be Paid For', '#6b6b6b')}
-                                ${renderSourceCircle('good_at', '⭐ What You\'re Good At', '#6b6b6b')}
+                                ${renderSourceCircle('good_at', '⭐ What You Are Good At', '#6b6b6b')}
                             </div>
                         ${renderVennDiagram()}
 </div>
 
                         <!-- Venn Diagram Visualization -->
                         <div>
-                            <h3 class="font-bold text-lg mb-4">Converging Zones</h3>
-                                                       
+                            <h3 class="font-bold text-lg mb-2">Converging Zones</h3>
+                            <p class="text-sm text-gray-600 mb-4">These zones represent where your circles overlap. Drop items here that fit multiple circles.</p>
+
                             <!-- Overlap Lists -->
                             <div class="mt-6 space-y-3">
-                                ${renderOverlapArea('passion', '🔥 Passion: What You\'re Good At + What You Love', overlapDefinitions.passion)}	
-				${renderOverlapArea('mission', '🎯 Mission: What You Love + What The World Needs', overlapDefinitions.mission)}
-                                ${renderOverlapArea('profession', '💼 Profession: What You Can Be Paid For + What You\'re Good At', overlapDefinitions.profession)}
-				${renderOverlapArea('vocation', '🌟 Vocation: What The World Needs + What You Can Be Paid For', overlapDefinitions.vocation)}
+                                ${renderOverlapArea('passion', '🔥 Passion: What You Are Good At + What You Love', overlapDefinitions.passion)}
+				${renderOverlapArea('mission', '🎯 Mission: What You Love + What the World Needs', overlapDefinitions.mission)}
+                                ${renderOverlapArea('profession', '💼 Profession: What You Can Be Paid For + What You Are Good At', overlapDefinitions.profession)}
+				${renderOverlapArea('vocation', '🌟 Vocation: What the World Needs + What You Can Be Paid For', overlapDefinitions.vocation)}
 
 
 
@@ -1591,13 +2028,13 @@ function renderIkigaiDiagram() {
                                 
                                 <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-4">
                                     <div class="flex justify-between items-center mb-2">
-                                        <h4 class="font-bold text-orange-600">✨ Your Purpose (All Four!)</h4>
-                                        <button class="text-sm text-orange-600" onclick="showTooltip(event, 'ikigai')">ⓘ</button>
+                                        <h4 class="font-bold text-orange-600">✨ Your Purpose (All Four Circles)</h4>
+                                        <button class="text-sm text-orange-600" onclick="showTooltip(event, 'ikigai')" aria-label="Learn more about ikigai">ⓘ</button>
                                     </div>
                                     <div class="drop-zone min-h-[80px]" data-zone="ikigai" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
                                         ${appState.ikigai.map(item => `
-                                            <div class="response-chip bg-orange-100 border-orange-400" draggable="true" data-item="${item}" data-source="ikigai">
-                                                ${item}
+                                            <div class="response-chip bg-orange-100 border-orange-400" draggable="true" data-item="${escapeHtml(item)}" data-source="ikigai">
+                                                ${escapeHtml(item)}
                                             </div>
                                         `).join('')}
                                         ${appState.ikigai.length === 0 ? '<p class="text-gray-400 text-sm p-4">Drag items that fit ALL FOUR circles here</p>' : ''}
@@ -1608,16 +2045,16 @@ function renderIkigaiDiagram() {
                         </div>
                     </div>
 
-                    ${appState.overlaps.passion.length === 0 && appState.overlaps.mission.length === 0 && 
-                      appState.overlaps.profession.length === 0 && appState.overlaps.vocation.length === 0 && 
+                    ${appState.overlaps.passion.length === 0 && appState.overlaps.mission.length === 0 &&
+                      appState.overlaps.profession.length === 0 && appState.overlaps.vocation.length === 0 &&
                       appState.ikigai.length === 0 ? `
                         <div class="info-box warning">
                             <span>⚠️</span>
                             <div>
                                 <strong>No convergences identified yet</strong>
-                                <p class="text-sm mt-1">You haven't categorized any responses. Would you like help finding convergences?</p>
+                                <p class="text-sm mt-1">You haven't categorized any responses yet. Drag items from your responses into the converging zones that match, or use the guide mode for help identifying which items fit together.</p>
                                 <button onclick="startGuideMode()" class="zen-button small mt-2">
-                                    Guide Me Through
+                                    🎯 Help Me Categorize
                                 </button>
                             </div>
                         </div>
@@ -1626,10 +2063,10 @@ function renderIkigaiDiagram() {
 
 <div class="flex justify-between items-center pt-6 border-t">
     <button onclick="goToStep(2)" class="zen-button secondary">
-        ← Back to Answers
+        ← Back to Your Circles
     </button>
     <button onclick="completeStep3()" class="zen-button">
-        Understand What's Missing →
+        Explore What's Missing →
     </button>
 </div>
                 </div>
@@ -1640,14 +2077,14 @@ function renderIkigaiDiagram() {
     return `
         <div class="mb-4">
             <h4 class="font-semibold mb-2" style="color: ${color}">${label}</h4>
-            <div class="drop-zone space-y-2 min-h-[60px] p-2 border-2 border-dashed border-gray-300 rounded-lg" 
-                 data-zone="${circle}" 
-                 ondrop="handleDrop(event)" 
-                 ondragover="handleDragOver(event)" 
+            <div class="drop-zone space-y-2 min-h-[60px] p-2 border-2 border-dashed border-gray-300 rounded-lg"
+                 data-zone="${circle}"
+                 ondrop="handleDrop(event)"
+                 ondragover="handleDragOver(event)"
                  ondragleave="handleDragLeave(event)">
                 ${appState.answers[circle].map((item, i) => `
-                    <div class="response-chip ${circle}" draggable="true" data-item="${item}" data-source="${circle}" data-index="${i}">
-                        ${item}
+                    <div class="response-chip ${circle}" draggable="true" data-item="${escapeHtml(item)}" data-source="${circle}" data-index="${i}">
+                        ${escapeHtml(item)}
                     </div>
                 `).join('')}
                 ${appState.answers[circle].length === 0 ? '<p class="text-gray-400 text-xs p-2">No items</p>' : ''}
@@ -1661,12 +2098,12 @@ function renderIkigaiDiagram() {
                 <div class="border-2 border-gray-200 rounded-xl p-3">
                     <div class="flex justify-between items-center mb-2">
                         <h4 class="font-semibold text-sm">${label}</h4>
-                        <button class="text-sm text-gray-600" onclick="showTooltip(event, '${type}')">ⓘ</button>
+                        <button class="text-sm text-gray-600" onclick="showTooltip(event, '${type}')" aria-label="Learn more about ${type}">ⓘ</button>
                     </div>
                     <div class="drop-zone min-h-[60px]" data-zone="${type}" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
                         ${appState.overlaps[type].map(item => `
-                            <div class="response-chip" draggable="true" data-item="${item}" data-source="${type}">
-                                ${item}
+                            <div class="response-chip" draggable="true" data-item="${escapeHtml(item)}" data-source="${type}">
+                                ${escapeHtml(item)}
                             </div>
                         `).join('')}
                         ${appState.overlaps[type].length === 0 ? '<p class="text-gray-400 text-xs p-2">Drop items here</p>' : ''}
@@ -1770,7 +2207,9 @@ function renderVennDiagram() {
 }
         // Tooltip functionality
         function showTooltip(event, type) {
-            const tooltip = document.getElementById('tooltip');
+            const tooltip = domCache.get('tooltip');
+            if (!tooltip) return;
+
             const definitions = {
                 passion: PDF_CONTENT.step3.definitions.passion.text,
                 mission: PDF_CONTENT.step3.definitions.mission.text,
@@ -1778,17 +2217,17 @@ function renderVennDiagram() {
                 vocation: PDF_CONTENT.step3.definitions.vocation.text,
                 ikigai: PDF_CONTENT.step3.definitions.ikigai.text
             };
-            
+
             tooltip.textContent = definitions[type];
             tooltip.classList.add('show');
-            
+
             const rect = event.target.getBoundingClientRect();
             tooltip.style.left = rect.left + 'px';
             tooltip.style.top = (rect.bottom + 10) + 'px';
-            
+
             setTimeout(() => {
                 tooltip.classList.remove('show');
-            }, 5000);
+            }, CONFIG.TOOLTIP_TIMEOUT);
         }
 
         // Guide Mode for Step 3
@@ -1802,7 +2241,7 @@ function renderVennDiagram() {
             });
             
             if (allItems.length === 0) {
-                alert('Please add some responses in Step 2 first!');
+                showAlert('Add Your Responses First', 'You\'ll need to add responses in Step 2 before using the guide mode.');
                 return;
             }
             
@@ -1852,15 +2291,15 @@ function renderVennDiagram() {
                             <label class="flex items-center gap-2 p-3 border-2 border-orange-400 rounded-lg cursor-pointer hover:bg-orange-50">
                                 <input type="checkbox" name="overlap" value="ikigai" class="w-4 h-4">
                                 <div>
-                                    <div class="font-medium text-orange-600">✨ Ikigai (All Four!)</div>
+                                    <div class="font-medium text-orange-600">✨ Ikigai (All Four Circles)</div>
                                 </div>
                             </label>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="skipGuideItem()" class="zen-button secondary flex-1">Skip</button>
+                            <button onclick="skipGuideItem()" class="zen-button secondary flex-1">Skip This Item</button>
                             <button onclick="saveGuideItem()" class="zen-button flex-1">Save & Next →</button>
                         </div>
-                        <button onclick="closeGuideMode()" class="text-sm text-gray-600 hover:text-gray-800 mt-4 block w-full text-center">Exit Guide</button>
+                        <button onclick="closeGuideMode()" class="text-sm text-gray-600 hover:text-gray-800 mt-4 block w-full text-center">Close</button>
                     </div>
                     <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999;" onclick="closeGuideMode()"></div>
                 `;
@@ -1981,9 +2420,9 @@ function renderVennDiagram() {
         // Remove from the specific overlap it came from (if it came from an overlap)
         if (overlapZones.includes(source)) {
             if (source === 'ikigai') {
-                appState.ikigai = appState.ikigai.filter(i => i !== item);
+                StateManager.removeFromIkigai(item);
             } else {
-                appState.overlaps[source] = appState.overlaps[source].filter(i => i !== item);
+                StateManager.removeFromOverlap(source, item);
             }
         }
         // Note: We don't add it back to the source circle because it was never removed from there
@@ -1991,30 +2430,25 @@ function renderVennDiagram() {
         // Dropping to an overlap zone
         // Add to new zone
         if (zone === 'ikigai') {
-            if (!appState.ikigai.includes(item)) {
-                appState.ikigai.push(item);
-            }
+            StateManager.addToIkigai(item);
         } else {
-            if (!appState.overlaps[zone].includes(item)) {
-                appState.overlaps[zone].push(item);
-            }
+            StateManager.addToOverlap(zone, item);
         }
-        
+
         // Remove from source if it was an overlap zone (moving between overlaps)
         if (overlapZones.includes(source)) {
             if (source === 'ikigai') {
-                appState.ikigai = appState.ikigai.filter(i => i !== item);
+                StateManager.removeFromIkigai(item);
             } else {
-                appState.overlaps[source] = appState.overlaps[source].filter(i => i !== item);
+                StateManager.removeFromOverlap(source, item);
             }
         }
         // Note: If source is a circle (love, needs, etc.), we don't remove it from there
         // because items can exist in both their source circle AND in overlaps
     }
-    
-    saveState();
+
     render();
-    
+
     return false;
 }
 
@@ -2023,23 +2457,24 @@ function renderVennDiagram() {
             saveState();
             render();
         }
-        
-// Render Step 4 - Identify Missing Circles
-function renderStep4() {
+
+// Memoized Step 4 Analysis Calculator
+const calculateStep4Analysis = memoize((answers, overlaps, ikigai) => {
     // Build a map of unique items and track which SOURCE CIRCLES they actually appear in
     const itemMap = new Map();
-    
+
     // First, scan all source circles to see where each item actually exists
     const allCircles = ['love', 'needs', 'paid_for', 'good_at'];
-    
+
     // Helper function to normalize item text for comparison
     const normalizeItem = (item) => item.toLowerCase().trim();
-    
+
     // Build map from source circles (Step 2 answers)
     allCircles.forEach(circle => {
-        appState.answers[circle].forEach(item => {
+        if (!answers[circle]) return;
+        answers[circle].forEach(item => {
             const itemNormalized = normalizeItem(item);
-            
+
             if (!itemMap.has(itemNormalized)) {
                 itemMap.set(itemNormalized, {
                     originalText: item,
@@ -2048,40 +2483,43 @@ function renderStep4() {
                     isIkigai: false
                 });
             }
-            
+
             itemMap.get(itemNormalized).presentInCircles.add(circle);
         });
     });
-    
+
     // Now check which items appear in overlaps (for display purposes only)
-    Object.entries(appState.overlaps).forEach(([type, items]) => {
+    Object.entries(overlaps).forEach(([type, items]) => {
+        if (!items) return;
         items.forEach(item => {
             const itemNormalized = normalizeItem(item);
-            
+
             if (itemMap.has(itemNormalized)) {
                 itemMap.get(itemNormalized).inOverlaps.push(type);
             }
         });
     });
-    
+
     // Check ikigai items
-    appState.ikigai.forEach(item => {
-        const itemNormalized = normalizeItem(item);
-        
-        if (itemMap.has(itemNormalized)) {
-            itemMap.get(itemNormalized).isIkigai = true;
-        }
-    });
-    
+    if (ikigai) {
+        ikigai.forEach(item => {
+            const itemNormalized = normalizeItem(item);
+
+            if (itemMap.has(itemNormalized)) {
+                itemMap.get(itemNormalized).isIkigai = true;
+            }
+        });
+    }
+
     // Build analysis array - only include items that are in at least one overlap or ikigai
     const analysis = [];
-    
+
     itemMap.forEach((data) => {
         // Only include if item is in overlaps or ikigai
         if (data.inOverlaps.length > 0 || data.isIkigai) {
             const present = Array.from(data.presentInCircles);
             const missing = allCircles.filter(c => !data.presentInCircles.has(c));
-            
+
             analysis.push({
                 activity: data.originalText,
                 type: data.isIkigai ? 'ikigai' : data.inOverlaps[0], // Use first overlap type for display
@@ -2091,22 +2529,34 @@ function renderStep4() {
         }
     });
 
-    appState.step4Analysis = analysis;
-    saveState();
+    return analysis;
+});
 
-    const circleLabels = {
-        love: 'What you love',
-        needs: 'What the world needs',
-        paid_for: 'What you can be paid for',
-        good_at: 'What you are good at'
-    };
+// Render Step 4 - Identify Missing Circles
+function renderStep4() {
+    // Use memoized calculation
+    const analysis = calculateStep4Analysis(
+        appState.answers,
+        appState.overlaps,
+        appState.ikigai
+    );
+
+    appState.step4Analysis = analysis;
+    saveStateImmediate(); // Use immediate save for step transitions
 
     return `
         <div class="zen-card max-w-6xl mx-auto">
             <h2 class="action-header">${PDF_CONTENT.step4.title}</h2>
-            <p class="instruction mb-6">
+            <p class="instruction mb-4">
                 ${PDF_CONTENT.step4.text}
             </p>
+            <div class="info-box mb-6">
+                <span>🎯</span>
+                <div>
+                    <strong>Why Missing Circles Matter</strong>
+                    <p class="text-sm mt-1">Understanding what's missing helps you see what to develop or change to move closer to your ikigai. These gaps reveal opportunities for growth, learning, or shifts in how you approach these activities.</p>
+                </div>
+            </div>
 
             ${analysis.length === 0 ? `
                 <div class="empty-state">
@@ -2130,18 +2580,18 @@ function renderStep4() {
                             ${analysis.map((item, i) => `
                                 <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
                                     <td class="border border-gray-300 px-4 py-3 font-medium">
-                                        ${item.activity}
+                                        ${escapeHtml(item.activity)}
                                         ${item.type === 'ikigai' ? '<span class="ml-2 text-xs bg-orange-500 text-white px-2 py-1 rounded">Ikigai!</span>' : ''}
                                     </td>
                                     <td class="border border-gray-300 px-4 py-3">
                                         <ul class="text-sm">
-                                            ${item.present.map(c => `<li>▪ ${circleLabels[c]}</li>`).join('')}
+                                            ${item.present.map(c => `<li>▪ ${CIRCLE_LABELS[c]}</li>`).join('')}
                                         </ul>
                                     </td>
                                     <td class="border border-gray-300 px-4 py-3">
-                                        ${item.missing.length === 0 ? 
-                                            '<span class="text-green-600 font-semibold">Nothing - Complete!</span>' :
-                                            `<ul class="text-sm text-orange-600">${item.missing.map(c => `<li>▪ ${circleLabels[c]}</li>`).join('')}</ul>`
+                                        ${item.missing.length === 0 ?
+                                            '<span class="text-green-600 font-semibold">Nothing - Completed!</span>' :
+                                            `<ul class="text-sm text-orange-600">${item.missing.map(c => `<li>▪ ${CIRCLE_LABELS[c]}</li>`).join('')}</ul>`
                                         }
                                     </td>
                                 </tr>
@@ -2152,10 +2602,10 @@ function renderStep4() {
 
                 <div class="flex justify-between pt-6 border-t">
                     <button onclick="goToStep(3)" class="zen-button secondary">
-                        ← Back to Convergences
+                        ← Back to Find Convergences
                     </button>
                     <button onclick="completeStep4()" class="zen-button">
-                        Reflect →
+                        Reflect Deeply →
                     </button>
                 </div>
             `}
@@ -2168,7 +2618,7 @@ function renderStep4() {
 
         function completeStep4() {
             if (appState.step4Analysis.length === 0) {
-                alert('Please complete Step 3 first by categorizing your overlapping responses.');
+                showAlert('Complete Step 3 First', 'Please categorize your responses in Step 3 before continuing. Use the drag-and-drop or guide mode to identify your convergences.');
                 return;
             }
             appState.currentStep = 5;
@@ -2186,7 +2636,7 @@ function renderStep4() {
                 return `
                     <div class="zen-card max-w-4xl mx-auto text-center">
                         <h2 class="text-3xl font-bold mb-4">Congratulations! 🎉</h2>
-                        <p class="text-xl mb-6">All your activities are complete across the four circles. You're ready to know your Purpose!</p>
+                        <p class="text-xl mb-6">All your activities are completed across the four circles. You're ready to know your Purpose!</p>
                         <button onclick="completeStep5()" class="zen-button">
                             View Your Purpose Results →
                         </button>
@@ -2196,13 +2646,6 @@ function renderStep4() {
 
             const currentIndex = appState.step5CurrentActivity || 0;
             const currentActivity = activities[currentIndex];
-            
-            const circleLabels = {
-                love: 'What You Love',
-                needs: 'What the World Needs',
-                paid_for: 'What You Can Be Paid For',
-		good_at: 'What You Are Good At'
-            };
 
             // Get questions for missing circles
             const questionsToAsk = [];
@@ -2244,10 +2687,10 @@ function renderStep4() {
                     <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-6 mb-6">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold mb-2">Activity: "${currentActivity.activity}"</h3>
+                                <h3 class="text-2xl font-bold mb-2">Activity: "${escapeHtml(currentActivity.activity)}"</h3>
                                 <div class="text-sm space-y-1">
-                                    <p><strong>Present in:</strong> ${currentActivity.present.map(c => circleLabels[c]).join(', ')}</p>
-                                    <p><strong>Missing from:</strong> <span class="text-orange-600 font-semibold">${currentActivity.missing.map(c => circleLabels[c]).join(', ')}</span></p>
+                                    <p><strong>Present in:</strong> ${currentActivity.present.map(c => CIRCLE_LABELS[c]).join(', ')}</p>
+                                    <p><strong>Missing from:</strong> <span class="text-orange-600 font-semibold">${currentActivity.missing.map(c => CIRCLE_LABELS[c]).join(', ')}</span></p>
                                 </div>
                             </div>
                             <div class="text-sm text-gray-600 text-right">
@@ -2288,12 +2731,12 @@ function renderStep4() {
                                             </div>
                                             <div class="accordion-content" id="${accordionId}">
                                                 <div class="accordion-body">
-                                                    <textarea 
+                                                    <textarea
                                                         class="zen-textarea"
                                                         rows="4"
-                                                        placeholder="Take your time to reflect deeply..."
-                                                        onchange="saveReflection('${responseKey}', this.value)"
-                                                    >${savedResponse}</textarea>
+                                                        placeholder="Your honest thoughts matter most..."
+                                                        onchange="saveReflection('${escapeHtml(responseKey)}', this.value)"
+                                                    >${escapeHtml(savedResponse)}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2319,7 +2762,7 @@ function renderStep4() {
                             </button>
                         ` : `
                             <button onclick="goToStep(4)" class="zen-button secondary">
-                                ← Back to Step 4
+                                ← Back to Explore Gaps
                             </button>
                         `}
                         
@@ -2370,8 +2813,7 @@ function renderStep4() {
         }
 
         function saveReflection(key, value) {
-            appState.step5Reflections[key] = value;
-            saveState();
+            StateManager.setReflection(key, value);
             showSaveIndicator();
         }
 
@@ -2393,13 +2835,6 @@ function renderStep4() {
 
         // Render Results
         function renderResults() {
-            const circleLabels = {
-                love: 'What You Love',
-                needs: 'What the World Needs',
-                paid_for: 'What You Can Be Paid For',
-                good_at: 'What You Are Good At'
-            };
-
             return `
                 <div class="zen-card max-w-6xl mx-auto">
                     <h1 class="text-4xl font-bold text-center mb-8">Congratulations on completing this journey!</h1>
@@ -2410,7 +2845,7 @@ function renderStep4() {
                             <p class="text-gray-700 mb-6">${PDF_CONTENT.step3.definitions.ikigai.text}</p>
                             <div class="space-y-3">
                                 ${appState.ikigai.map(item => `
-                                    <div class="text-2xl font-bold bg-white rounded-xl p-4 shadow-md">${item}</div>
+                                    <div class="text-2xl font-bold bg-white rounded-xl p-4 shadow-md">${escapeHtml(item)}</div>
                                 `).join('')}
                             </div>
                         </div>
@@ -2426,8 +2861,9 @@ function renderStep4() {
 
 <!-- Complete Responses and Overlaps Summary -->
                     <div class="mb-8">
-                        <h2 class="text-2xl font-bold mb-6">📋 Your Complete Responses</h2>
-                        
+                        <h2 class="text-2xl font-bold mb-4">📋 Your Complete Responses</h2>
+                        <p class="text-gray-600 mb-6">Here's a complete summary of your ikigai journey. Review these insights every 6-12 months and update them as your life evolves.</p>
+
                         <div class="grid md:grid-cols-2 gap-8">
                             <!-- Left Column: Four Circles -->
                             <div>
@@ -2435,9 +2871,9 @@ function renderStep4() {
                                 <div class="space-y-6">
                                     ${Object.entries(appState.answers).map(([circle, items]) => `
                                         <div class="border-l-4 border-gray-300 pl-4">
-                                            <h4 class="font-bold mb-2 text-base">${circleLabels[circle]}</h4>
+                                            <h4 class="font-bold mb-2 text-base">${CIRCLE_LABELS[circle]}</h4>
                                             <ul class="space-y-1">
-                                                ${items.map(item => `<li class="text-sm text-gray-700">▪ ${item}</li>`).join('')}
+                                                ${items.map(item => `<li class="text-sm text-gray-700">▪ ${escapeHtml(item)}</li>`).join('')}
                                             </ul>
                                         </div>
                                     `).join('')}
@@ -2454,47 +2890,47 @@ function renderStep4() {
                                                 <h4 class="font-bold mb-2 text-base">🔥 Your Passion</h4>
                                                 <p class="text-xs text-gray-600 mb-2">What you love + What you're good at</p>
                                                 <ul class="space-y-1">
-                                                    ${appState.overlaps.passion.map(item => `<li class="text-sm text-gray-700">▪ ${item}</li>`).join('')}
+                                                    ${appState.overlaps.passion.map(item => `<li class="text-sm text-gray-700">▪ ${escapeHtml(item)}</li>`).join('')}
                                                 </ul>
                                             </div>
                                         ` : ''}
-                                        
+
                                         ${appState.overlaps.mission.length > 0 ? `
                                             <div class="border-l-4 border-blue-400 pl-4">
                                                 <h4 class="font-bold mb-2 text-base">🎯 Your Mission</h4>
                                                 <p class="text-xs text-gray-600 mb-2">What you love + What the world needs</p>
                                                 <ul class="space-y-1">
-                                                    ${appState.overlaps.mission.map(item => `<li class="text-sm text-gray-700">▪ ${item}</li>`).join('')}
+                                                    ${appState.overlaps.mission.map(item => `<li class="text-sm text-gray-700">▪ ${escapeHtml(item)}</li>`).join('')}
                                                 </ul>
                                             </div>
                                         ` : ''}
-                                        
+
                                         ${appState.overlaps.profession.length > 0 ? `
                                             <div class="border-l-4 border-green-400 pl-4">
                                                 <h4 class="font-bold mb-2 text-base">💼 Your Profession</h4>
                                                 <p class="text-xs text-gray-600 mb-2">What you're good at + What you can be paid for</p>
                                                 <ul class="space-y-1">
-                                                    ${appState.overlaps.profession.map(item => `<li class="text-sm text-gray-700">▪ ${item}</li>`).join('')}
+                                                    ${appState.overlaps.profession.map(item => `<li class="text-sm text-gray-700">▪ ${escapeHtml(item)}</li>`).join('')}
                                                 </ul>
                                             </div>
                                         ` : ''}
-                                        
+
                                         ${appState.overlaps.vocation.length > 0 ? `
                                             <div class="border-l-4 border-yellow-400 pl-4">
                                                 <h4 class="font-bold mb-2 text-base">🌟 Your Vocation</h4>
                                                 <p class="text-xs text-gray-600 mb-2">What the world needs + What you can be paid for</p>
                                                 <ul class="space-y-1">
-                                                    ${appState.overlaps.vocation.map(item => `<li class="text-sm text-gray-700">▪ ${item}</li>`).join('')}
+                                                    ${appState.overlaps.vocation.map(item => `<li class="text-sm text-gray-700">▪ ${escapeHtml(item)}</li>`).join('')}
                                                 </ul>
                                             </div>
                                         ` : ''}
-                                        
+
                                         ${appState.ikigai.length > 0 ? `
                                             <div class="border-l-4 border-orange-500 pl-4 bg-orange-50 py-3 pr-3 rounded-r-lg">
                                                 <h4 class="font-bold mb-2 text-base text-orange-700">✨ Your Ikigai</h4>
                                                 <p class="text-xs text-gray-600 mb-2">All four circles</p>
                                                 <ul class="space-y-1">
-                                                    ${appState.ikigai.map(item => `<li class="text-sm text-gray-800 font-medium">▪ ${item}</li>`).join('')}
+                                                    ${appState.ikigai.map(item => `<li class="text-sm text-gray-800 font-medium">▪ ${escapeHtml(item)}</li>`).join('')}
                                                 </ul>
                                             </div>
                                         ` : ''}
@@ -2524,11 +2960,11 @@ function renderStep4() {
 
                     <div class="flex flex-wrap gap-4 justify-between pt-8 border-t">
     <button onclick="goToStep(4)" class="zen-button secondary icon">
-        ← Back to Step 4
+        ← Back to Explore Gaps
     </button>
     <div class="flex flex-wrap gap-4">
         <button onclick="printResults()" class="zen-button secondary icon">
-            🖨️ Print Results
+            🖨️ Print or Save as PDF
         </button>
         <button onclick="resetApp()" class="zen-button secondary icon">
             🔄 Start New Journey
@@ -2552,66 +2988,59 @@ function toggleReflectionsDetail() {
         function renderReflectionsSummary() {
             // Group reflections by activity
             const reflectionsByActivity = {};
-            
+
             Object.entries(appState.step5Reflections).forEach(([key, value]) => {
                 if (!value || !value.trim()) return; // Skip empty reflections
-                
+
                 const [activity, circle, questionIndex] = key.split('|');
-                
+
                 if (!reflectionsByActivity[activity]) {
                     reflectionsByActivity[activity] = {};
                 }
-                
+
                 if (!reflectionsByActivity[activity][circle]) {
                     reflectionsByActivity[activity][circle] = [];
                 }
-                
+
                 reflectionsByActivity[activity][circle].push({
                     questionIndex: parseInt(questionIndex),
                     response: value
                 });
             });
-            
+
             if (Object.keys(reflectionsByActivity).length === 0) {
                 return '<p class="text-gray-500 text-center py-8">No reflections recorded yet.</p>';
             }
-            
-            const circleLabels = {
-                love: 'What You Love',
-                needs: 'What the World Needs',
-                paid_for: 'What You Can Be Paid For',
-                good_at: 'What You Are Good At'
-            };
-            
+
             const circleTitles = {
                 love: PDF_CONTENT.step5.love.title,
                 needs: PDF_CONTENT.step5.needs.title,
                 paid_for: PDF_CONTENT.step5.paid_for.title,
                 good_at: PDF_CONTENT.step5.good_at.title
             };
-            
+
             let html = '';
-            
+
             Object.entries(reflectionsByActivity).forEach(([activity, circles]) => {
                 html += `
                     <div class="mb-8 pb-8 border-b last:border-b-0">
-                        <h4 class="text-xl font-bold mb-4 text-orange-600">Activity: "${activity}"</h4>
-                        
+                        <h4 class="text-xl font-bold mb-4 text-orange-600">Activity: "${escapeHtml(activity)}"</h4>
+
                         ${Object.entries(circles).map(([circle, reflections]) => {
                             const circleContent = PDF_CONTENT.step5[circle];
-                            
+
                             return `
                                 <div class="mb-6 bg-gray-50 rounded-xl p-6">
                                     <h5 class="font-bold text-lg mb-2">${circleTitles[circle]}</h5>
-                                    <p class="text-sm text-gray-600 mb-4 italic">"${circleLabels[circle]}" was missing</p>
-                                    
+                                    <p class="text-sm text-gray-600 mb-4 italic">"${CIRCLE_LABELS[circle]}" was missing</p>
+
                                     <div class="space-y-4">
                                         ${reflections.map(reflection => {
                                             const question = circleContent.questions[reflection.questionIndex];
                                             return `
                                                 <div class="bg-white rounded-lg p-4 border-l-4 border-orange-400">
                                                     <p class="font-semibold text-sm mb-2 text-gray-700">Q${reflection.questionIndex + 1}: ${question}</p>
-                                                    <p class="text-sm text-gray-800">${reflection.response}</p>
+                                                    <p class="text-sm text-gray-800">${escapeHtml(reflection.response)}</p>
                                                 </div>
                                             `;
                                         }).join('')}
@@ -2622,7 +3051,7 @@ function toggleReflectionsDetail() {
                     </div>
                 `;
             });
-            
+
             return html;
         }
 
@@ -2646,94 +3075,170 @@ function toggleReflectionsDetail() {
         }
 
         function saveCurrentSession() {
-            const name = prompt('Name this session:');
-            if (!name) return;
+            showPrompt(
+                'Give This Journey a Name',
+                'You can return to it anytime from the Sessions menu.',
+                'e.g., "My First Exploration" or "Career Reflection 2025"',
+                (name) => {
+                    if (!name || !name.trim()) {
+                        showAlert('Name Required', 'Please enter a name for your session.');
+                        return;
+                    }
 
-            const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
-            sessions.push({
-                name: name,
-                timestamp: new Date().toISOString(),
-                state: JSON.parse(JSON.stringify(appState))
-            });
-            localStorage.setItem('ikigai-sessions', JSON.stringify(sessions));
-            
-            showSaveIndicator();
-            loadSessionsList();
+                    try {
+                        const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
+                        sessions.push({
+                            name: escapeHtml(name.trim()),
+                            timestamp: new Date().toISOString(),
+                            state: JSON.parse(JSON.stringify(appState))
+                        });
+                        localStorage.setItem('ikigai-sessions', JSON.stringify(sessions));
+
+                        showSaveIndicator();
+                        loadSessionsList();
+                        showAlert('Session Saved', `Your session "${escapeHtml(name.trim())}" has been saved.`);
+                    } catch (e) {
+                        console.error('Failed to save session:', e);
+                        if (e.name === 'QuotaExceededError') {
+                            showAlert('Storage Full', 'Your browser storage is full. To save this session, delete some old sessions from the Sessions menu first.');
+                        } else {
+                            showAlert('Save Failed', 'Unable to save your session. Please check your browser settings and try again.');
+                        }
+                    }
+                },
+                null // onCancel
+            );
         }
 
         function loadSessionsList() {
-            const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
-            const list = document.getElementById('sessionsList');
-            
-            if (sessions.length === 0) {
-                list.innerHTML = '<p class="text-gray-500 text-sm">No saved sessions yet</p>';
-                return;
-            }
+            try {
+                const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
+                const list = document.getElementById('sessionsList');
 
-            list.innerHTML = sessions.map((session, i) => `
-                <div class="border border-gray-200 rounded-lg p-3 mb-2 bg-white hover:shadow-md transition-shadow">
-                    <div class="font-semibold">${session.name}</div>
-                    <div class="text-xs text-gray-500 mb-2">${new Date(session.timestamp).toLocaleString()}</div>
-                    <div class="flex gap-2">
-                        <button onclick="loadSession(${i})" class="text-sm px-3 py-1 bg-orange-500 text-white rounded hover:bg-orange-600">Load</button>
-                        <button onclick="deleteSession(${i})" class="text-sm px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Delete</button>
+                if (!list) {
+                    console.warn('Sessions list element not found');
+                    return;
+                }
+
+                if (sessions.length === 0) {
+                    list.innerHTML = '<div class="text-gray-500 text-sm"><p class="font-semibold mb-1">No saved sessions yet</p><p class="text-xs">Sessions let you save and revisit your ikigai journey anytime. You can save your current progress as a session from the main menu.</p></div>';
+                    return;
+                }
+
+                list.innerHTML = sessions.map((session, i) => `
+                    <div class="border border-gray-200 rounded-lg p-3 mb-2 bg-white hover:shadow-md transition-shadow">
+                        <div class="font-semibold">${escapeHtml(session.name)}</div>
+                        <div class="text-xs text-gray-500 mb-2">Saved on ${new Date(session.timestamp).toLocaleDateString()} at ${new Date(session.timestamp).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</div>
+                        <div class="flex gap-2">
+                            <button onclick="loadSession(${i})" class="text-sm px-3 py-1 bg-orange-500 text-white rounded hover:bg-orange-600">Load</button>
+                            <button onclick="deleteSession(${i})" class="text-sm px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Delete</button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+            } catch (e) {
+                console.error('Failed to load sessions list:', e);
+                const list = document.getElementById('sessionsList');
+                if (list) {
+                    list.innerHTML = '<p class="text-red-500 text-sm">Failed to load sessions</p>';
+                }
+            }
         }
 
         function loadSession(index) {
-            const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
-            if (sessions[index]) {
-                Object.assign(appState, sessions[index].state);
-                saveState();
-                render();
-                closeSidebar();
+            try {
+                const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
+                if (sessions[index]) {
+                    Object.assign(appState, sessions[index].state);
+                    saveStateImmediate(); // Use immediate save when loading session
+                    render();
+                    closeSidebar();
+                }
+            } catch (e) {
+                console.error('Failed to load session:', e);
+                showAlert('Could Not Load Session', 'This session\'s data appears to be corrupted. Please try another session or start fresh.');
             }
         }
 
         function deleteSession(index) {
-            if (!confirm('Delete this session?')) return;
-            
-            const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
-            sessions.splice(index, 1);
-            localStorage.setItem('ikigai-sessions', JSON.stringify(sessions));
-            loadSessionsList();
+            try {
+                const sessions = JSON.parse(localStorage.getItem('ikigai-sessions') || '[]');
+                const sessionName = sessions[index]?.name || 'this session';
+
+                showConfirm(
+                    'Delete Session?',
+                    `Delete "${sessionName}"? This can't be undone.`,
+                    () => {
+                        try {
+                            sessions.splice(index, 1);
+                            localStorage.setItem('ikigai-sessions', JSON.stringify(sessions));
+                            loadSessionsList();
+                            showAlert('Session Deleted', 'The session has been removed from your saved sessions.');
+                        } catch (e) {
+                            console.error('Failed to delete session:', e);
+                            showAlert('Delete Failed', 'Unable to delete the session. Please refresh the page and try again.');
+                        }
+                    },
+                    null // onCancel
+                );
+            } catch (e) {
+                console.error('Failed to load sessions:', e);
+                showAlert('Error', 'Could not load session information.');
+            }
         }
 
-        // State Management
-        function saveState() {
-            localStorage.setItem('ikigai-current-state', JSON.stringify(appState));
-            showSaveIndicator();
-        }
-
-        function loadState() {
-            const saved = localStorage.getItem('ikigai-current-state');
-            if (saved) {
-                const savedState = JSON.parse(saved);
-                Object.assign(appState, savedState);
-                
-                // Ensure expandedSections exists
-                if (!appState.expandedSections) {
-                    appState.expandedSections = {
-                        step2Intro: false,
-                        step2Circles: {}
-                    };
-                }
-                
-                // Ensure promptMode exists
-                if (!appState.promptMode) {
-                    appState.promptMode = {
-                        active: false,
-                        currentCircle: null,
-                        currentPromptIndex: 0
-                    };
+        // State Management with Error Handling
+        function saveStateImmediate() {
+            try {
+                const stateString = JSON.stringify(appState);
+                localStorage.setItem('ikigai-current-state', stateString);
+                showSaveIndicator();
+            } catch (e) {
+                console.error('Failed to save state:', e);
+                if (e.name === 'QuotaExceededError') {
+                    showAlert('Storage Full', 'You\'re running low on storage space. Try deleting some old sessions to free up space.');
+                } else {
+                    showAlert('Save Failed', 'Unable to save your progress. Please check your browser settings or try refreshing the page.');
                 }
             }
         }
 
+        // Debounced version for frequent updates
+        const saveState = debounce(saveStateImmediate, CONFIG.SAVE_DEBOUNCE_MS);
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('ikigai-current-state');
+                if (saved) {
+                    const savedState = JSON.parse(saved);
+                    Object.assign(appState, savedState);
+
+                    // Ensure expandedSections exists
+                    if (!appState.expandedSections) {
+                        appState.expandedSections = {
+                            step2Intro: false,
+                            step2Circles: {}
+                        };
+                    }
+
+                    // Ensure promptMode exists
+                    if (!appState.promptMode) {
+                        appState.promptMode = {
+                            active: false,
+                            currentCircle: null,
+                            currentPromptIndex: 0
+                        };
+                    }
+                }
+            } catch (e) {
+                console.error('Failed to load state:', e);
+                // State remains at default initialization - silently start fresh
+            }
+        }
+
         function showSaveIndicator() {
-            const indicator = document.getElementById('saveIndicator');
+            const indicator = domCache.get('saveIndicator');
+            if (!indicator) return;
+
             indicator.classList.add('show');
             setTimeout(() => {
                 indicator.classList.remove('show');
@@ -2741,15 +3246,41 @@ function toggleReflectionsDetail() {
         }
 
         function resetApp() {
-            if (!confirm('This will clear all your current progress. Are you sure?')) return;
-            
-            localStorage.removeItem('ikigai-current-state');
-            location.reload();
+            showModal({
+                title: 'Start a New Journey?',
+                message: 'This will clear your current progress and start fresh. Your work is auto-saved. Would you like to save it as a session first?',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        class: 'modal-btn-tertiary',
+                        onClick: null
+                    },
+                    {
+                        text: 'Save as Session First',
+                        class: 'modal-btn-secondary',
+                        onClick: () => {
+                            closeCustomModal();
+                            saveCurrentSession();
+                        }
+                    },
+                    {
+                        text: 'Start Fresh',
+                        class: 'modal-btn-primary',
+                        onClick: () => {
+                            localStorage.removeItem('ikigai-current-state');
+                            location.reload();
+                        }
+                    }
+                ]
+            });
         }
 
         // Export Functions
         function exportToPDF() {
-            alert('PDF export will generate a comprehensive document with all your responses, overlaps, reflections, and Ikigai results. This feature requires a PDF library.\n\nFor now, you can use the Print function to save as PDF from your browser\'s print dialog.');
+            showAlert(
+                'PDF Export Coming Soon!',
+                'For now, use the Print button and select "Save as PDF" from your browser\'s print dialog. This will create a beautiful PDF with all your responses and insights.'
+            );
         }
 
         function printResults() {
