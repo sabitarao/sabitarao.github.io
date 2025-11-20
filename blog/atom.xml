@@ -169,7 +169,7 @@
         <updated>2025-11-08T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security - where each one could analyze the app and generate unique, detailed findings as expert team personas. But the audit reports existed only as chat artifacts, and I wanted them in Notion where I could track fixes, link to GitHub issues, and measure progress over time.]]></summary>
         <content type="html"><![CDATA[<p>I had built five audit skills for my Ikigai app - UX, Code Quality, Content Accuracy, Accessibility, and Security - where each one could analyze the app and generate unique, detailed findings as expert team personas. But the audit reports existed only as chat artifacts, and I wanted them in Notion where I could track fixes, link to GitHub issues, and measure progress over time.</p>
-<p>I asked Claude to suggest the database schemas I'd need in Notion to track audits, and it did; ten databases to start with, five for audit sessions, five for individual findings, all with proper schemas and relations between them.</p>
+<p>On prompting, Claude suggested the database schemas I'd need in Notion to track audits: ten databases - five for audit sessions, five for individual findings - all with proper schemas and relations between them.</p>
 <p>I manually created one database in Notion to test the concept. Getting every property right - the select options, the number fields, the relations - took focus that would now need to last for ten databases.</p>
 <p>So instead, I set up the Notion MCP connection and asked Claude to complete the task.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-setup">The setup<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-setup" class="hash-link" aria-label="Direct link to The setup" title="Direct link to The setup" translate="no">​</a></h3>
@@ -207,11 +207,11 @@
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/notion-mcp-audits#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h3>
 <p>The integration works well. I have two audits completed with reports in Notion, ready to track. I want to turn Notion findings into GitHub issues now to track completion and link to release notes, etc.</p>
 <p>The audit skills themselves could become measurement tools. If I keep the check parameters unchanged, running audits at regular intervals could give me an objective progress marker.</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Fix issues --&gt; run audit again --&gt; compare results = simple tracking!</span><br></span></code></pre></div></div>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Fix issues --&gt; run audit again --&gt; compare results = hard quality numbers!</span><br></span></code></pre></div></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-learning">The learning<a href="https://sabitarao.github.io/blog/notion-mcp-audits#the-learning" class="hash-link" aria-label="Direct link to The learning" title="Direct link to The learning" translate="no">​</a></h3>
 <p>I now know to keep my requests to Claude simple. The clearer and more direct the task, the better the results. No need to overthink the prompts.</p>
 <p>This wasn't about me writing clever code or complex prompts. It was about Claude understanding the schemas needed and building them correctly. The manual work I'd done on that first database taught me what properties mattered. But scaling that to ten databases with relations, the setup script, the database schemas, the Notion integration, the audit execution was all Claude.</p>
-<p>MCP FTW!</p>
+<p>(MCP FTW!)</p>
 <p>Here are snapshots of the Notion audits:</p>
 <p><img decoding="async" loading="lazy" alt="ux-audit" src="https://sabitarao.github.io/assets/images/ux-audit-c5b9744afd841d0aae60d1e7b9258bc5.png" width="1772" height="1007" class="img_ev3q"></p>
 <hr>
@@ -235,7 +235,7 @@
 <img decoding="async" loading="lazy" alt="Ikigai venn diagram" src="https://sabitarao.github.io/assets/images/ikigai-25af589ea0ae58f9f34f612e80846874.png" width="570" height="579" class="img_ev3q"></p>
 <p>That said, I find the framework insightful. The guided process of exploring passion, mission, vocation, and profession resonates with me, and I do think people could benefit from it as an interactive tool.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-fear">The fear<a href="https://sabitarao.github.io/blog/diving-into-ai#the-fear" class="hash-link" aria-label="Direct link to The fear" title="Direct link to The fear" translate="no">​</a></h3>
-<p>My biggest concern isn’t failure. It is not knowing how to handle AI-generated code if something goes wrong. If the code breaks or becomes messy, I wouldn't know where to begin fixing it. I've learned though, that the trick to working with AI is to build piece-by-piece, test frequently, and catch problems early.</p>
+<p>My biggest concern isn’t failure, it's not knowing how to handle AI-generated code if something goes wrong. If the code breaks or becomes messy, I wouldn't know where to begin fixing it, as a non-coder. I've learned though, that the trick to working with AI is to build piece-by-piece, test frequently, and catch problems early.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-prompt">First prompt<a href="https://sabitarao.github.io/blog/diving-into-ai#first-prompt" class="hash-link" aria-label="Direct link to First prompt" title="Direct link to First prompt" translate="no">​</a></h3>
 <p>I started with:</p>
 <blockquote>
@@ -261,10 +261,10 @@ Do not skim over or lose the details in the PDF.
 </ul>
 <p>These steps feel deeply insightful. They're also the pages I plan to make more “mine” as the project evolves.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What's next<a href="https://sabitarao.github.io/blog/diving-into-ai#whats-next" class="hash-link" aria-label="Direct link to What's next" title="Direct link to What's next" translate="no">​</a></h3>
-<p>Now that Phase 1 is complete, here's the plan:</p>
+<p>Now that Phase 1 is complete, here's the plan for Phase 2:</p>
 <ol>
 <li class="">
-<p>Phase 2: Run the audit skills</p>
+<p>Run the audit skills</p>
 <p>Claude and I built 5 <em>Claude Skills</em> to audit the app:</p>
 <ul>
 <li class="">UX/UI audit</li>
@@ -276,7 +276,7 @@ Do not skim over or lose the details in the PDF.
 <p>I’ve set up Notion to track the issues that these Skills generate. Claude designed the (ten) databases required to store these issues by Skill type. All I had to do was nudge it in the direction I wanted. (<em>More about this in the next blog!</em>)</p>
 </li>
 <li class="">
-<p>After running the audit skills:</p>
+<p>Fix issues</p>
 <ul>
 <li class="">Set up an issue tracker via GitHub MCP with Notion</li>
 <li class="">Find a way to automate issue fixes (ambitious, I know)</li>
@@ -285,7 +285,7 @@ Do not skim over or lose the details in the PDF.
 </ol>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="frustrations-and-challenges">Frustrations and challenges<a href="https://sabitarao.github.io/blog/diving-into-ai#frustrations-and-challenges" class="hash-link" aria-label="Direct link to Frustrations and challenges" title="Direct link to Frustrations and challenges" translate="no">​</a></h3>
 <p>Claude routinely generated code for alternate files without me asking for them. Sometimes even after I specifically told it not to, it would create new artifacts when all I needed was iterations on what we had.</p>
-<p>I learned to use Claude Projects and project descriptions to set persistent context, and used universal settings to remind Claude of my working style. I even reset the chat a few times to get back on track. This wasn't Claude being bad; it was me learning how to communicate better.</p>
+<p>I learned to use Claude Projects and project descriptions to set persistent context, and used a universal 'Truth Protocol' to remind Claude of my working style. I even reset the chat a few times to get back on track. This wasn't Claude being bad; it was me learning how to communicate better.</p>
 <p>I couldn't get the Notion MCP working initially because of conflicting setup info from both Claude and Notion - the documentation didn't align and I hit a wall. I have a similar challenge ahead: integrating with GitHub MCP to make app updates trackable through versions.</p>
 <p>I'm also about to run audit skills on the app for UX, accessibility, security, code quality, and content accuracy, and the resulting number of issues might get overwhelming.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ive-learned">What I've learned<a href="https://sabitarao.github.io/blog/diving-into-ai#what-ive-learned" class="hash-link" aria-label="Direct link to What I've learned" title="Direct link to What I've learned" translate="no">​</a></h3>

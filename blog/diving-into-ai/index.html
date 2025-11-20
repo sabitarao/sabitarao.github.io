@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Building an app from a PDF (because AI can!) | AI, Words, Workflows</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://sabitarao.github.io/blog/diving-into-ai"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Building an app from a PDF (because AI can!) | AI, Words, Workflows"><meta data-rh="true" name="description" content="AI and I built an interactive web app from a PDF, with drag-and-drop, auto-save, and an interactive five-step workflow, in a week! (I&#x27;m thrilled about how well it works too!)"><meta data-rh="true" property="og:description" content="AI and I built an interactive web app from a PDF, with drag-and-drop, auto-save, and an interactive five-step workflow, in a week! (I&#x27;m thrilled about how well it works too!)"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-10-01T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://sabitarao.github.io/blog/diving-into-ai"><link data-rh="true" rel="alternate" href="https://sabitarao.github.io/blog/diving-into-ai" hreflang="en"><link data-rh="true" rel="alternate" href="https://sabitarao.github.io/blog/diving-into-ai" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://sabitarao.github.io/blog/diving-into-ai","mainEntityOfPage":"https://sabitarao.github.io/blog/diving-into-ai","url":"https://sabitarao.github.io/blog/diving-into-ai","headline":"Building an app from a PDF (because AI can!)","name":"Building an app from a PDF (because AI can!)","description":"AI and I built an interactive web app from a PDF, with drag-and-drop, auto-save, and an interactive five-step workflow, in a week! (I'm thrilled about how well it works too!)","datePublished":"2025-10-01T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://sabitarao.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="AI, Words, Workflows RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="AI, Words, Workflows Atom Feed"><link rel="stylesheet" href="/assets/css/styles.8cd2c015.css">
-<script src="/assets/js/runtime~main.35e486ec.js" defer="defer"></script>
-<script src="/assets/js/main.b49a8125.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.f14c7669.js" defer="defer"></script>
+<script src="/assets/js/main.90a36912.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -20,7 +20,7 @@
 <img decoding="async" loading="lazy" alt="Ikigai venn diagram" src="/assets/images/ikigai-25af589ea0ae58f9f34f612e80846874.png" width="570" height="579" class="img_ev3q"></p>
 <p>That said, I find the framework insightful. The guided process of exploring passion, mission, vocation, and profession resonates with me, and I do think people could benefit from it as an interactive tool.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-fear">The fear<a href="#the-fear" class="hash-link" aria-label="Direct link to The fear" title="Direct link to The fear" translate="no">​</a></h3>
-<p>My biggest concern isn’t failure. It is not knowing how to handle AI-generated code if something goes wrong. If the code breaks or becomes messy, I wouldn&#x27;t know where to begin fixing it. I&#x27;ve learned though, that the trick to working with AI is to build piece-by-piece, test frequently, and catch problems early.</p>
+<p>My biggest concern isn’t failure, it&#x27;s not knowing how to handle AI-generated code if something goes wrong. If the code breaks or becomes messy, I wouldn&#x27;t know where to begin fixing it, as a non-coder. I&#x27;ve learned though, that the trick to working with AI is to build piece-by-piece, test frequently, and catch problems early.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-prompt">First prompt<a href="#first-prompt" class="hash-link" aria-label="Direct link to First prompt" title="Direct link to First prompt" translate="no">​</a></h3>
 <p>I started with:</p>
 <blockquote>
@@ -46,10 +46,10 @@ Do not skim over or lose the details in the PDF.
 </ul>
 <p>These steps feel deeply insightful. They&#x27;re also the pages I plan to make more “mine” as the project evolves.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-next">What&#x27;s next<a href="#whats-next" class="hash-link" aria-label="Direct link to What&#x27;s next" title="Direct link to What&#x27;s next" translate="no">​</a></h3>
-<p>Now that Phase 1 is complete, here&#x27;s the plan:</p>
+<p>Now that Phase 1 is complete, here&#x27;s the plan for Phase 2:</p>
 <ol>
 <li class="">
-<p>Phase 2: Run the audit skills</p>
+<p>Run the audit skills</p>
 <p>Claude and I built 5 <em>Claude Skills</em> to audit the app:</p>
 <ul>
 <li class="">UX/UI audit</li>
@@ -61,7 +61,7 @@ Do not skim over or lose the details in the PDF.
 <p>I’ve set up Notion to track the issues that these Skills generate. Claude designed the (ten) databases required to store these issues by Skill type. All I had to do was nudge it in the direction I wanted. (<em>More about this in the next blog!</em>)</p>
 </li>
 <li class="">
-<p>After running the audit skills:</p>
+<p>Fix issues</p>
 <ul>
 <li class="">Set up an issue tracker via GitHub MCP with Notion</li>
 <li class="">Find a way to automate issue fixes (ambitious, I know)</li>
@@ -70,7 +70,7 @@ Do not skim over or lose the details in the PDF.
 </ol>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="frustrations-and-challenges">Frustrations and challenges<a href="#frustrations-and-challenges" class="hash-link" aria-label="Direct link to Frustrations and challenges" title="Direct link to Frustrations and challenges" translate="no">​</a></h3>
 <p>Claude routinely generated code for alternate files without me asking for them. Sometimes even after I specifically told it not to, it would create new artifacts when all I needed was iterations on what we had.</p>
-<p>I learned to use Claude Projects and project descriptions to set persistent context, and used universal settings to remind Claude of my working style. I even reset the chat a few times to get back on track. This wasn&#x27;t Claude being bad; it was me learning how to communicate better.</p>
+<p>I learned to use Claude Projects and project descriptions to set persistent context, and used a universal &#x27;Truth Protocol&#x27; to remind Claude of my working style. I even reset the chat a few times to get back on track. This wasn&#x27;t Claude being bad; it was me learning how to communicate better.</p>
 <p>I couldn&#x27;t get the Notion MCP working initially because of conflicting setup info from both Claude and Notion - the documentation didn&#x27;t align and I hit a wall. I have a similar challenge ahead: integrating with GitHub MCP to make app updates trackable through versions.</p>
 <p>I&#x27;m also about to run audit skills on the app for UX, accessibility, security, code quality, and content accuracy, and the resulting number of issues might get overwhelming.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-ive-learned">What I&#x27;ve learned<a href="#what-ive-learned" class="hash-link" aria-label="Direct link to What I&#x27;ve learned" title="Direct link to What I&#x27;ve learned" translate="no">​</a></h3>
