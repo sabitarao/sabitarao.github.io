@@ -165,7 +165,9 @@
 <li class="">Developed an audit methodology focused on meaning, not format</li>
 <li class="">Positioned the content for AI consumption</li>
 </ul>
-<p>More importantly, this is NOT to prove that unstructured content is fine to live with! In fact, as Gemini rightly pointed out to me, none of the hoops we jumped with multiple ontology audits, building json files with detailed contexts, or even scripts would have been necessary if I had structured and modular content to begin with. Right now, any update to the source files warrants updating the ontology files and retrieval index; not a process that would work in an enterprise setting.</p>
+<blockquote>
+<p><em><strong>Crucial takeaway</strong>: This experiment does NOT to prove that unstructured content is fine to live with! In fact, as Gemini rightly pointed out to me, none of the hoops we jumped through (multiple ontology audits, building json files with detailed contexts, or even scripts) would have been necessary if I had structured and modular content to begin with. Right now, any update to the source files warrants updating the ontology files and retrieval index; not a process that would work in an enterprise setting.</em></p>
+</blockquote>
 <p>A distant goal in this experiment is to convert the 11 modules into structured data. <em>How</em> is another project!</p>]]></content>
     </entry>
     <entry>
