@@ -157,16 +157,17 @@
 </li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary">Summary<a href="https://sabitarao.github.io/blog/content-ontology-pivot#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary" translate="no">​</a></h3>
-<p>What started as a prompt engineering exercise became a knowledge architecture project. By shifting focus from content structure (DITA) to knowledge structure (ontology), I:</p>
+<p>What started as a prompt engineering exercise became a knowledge architecture project. By shifting focus from content structure (DITA) to knowledge structure (ontology), I could:</p>
 <ul>
-<li class="">Designed an entity taxonomy for learning content</li>
-<li class="">Created relationship types that capture how knowledge connects</li>
-<li class="">Built retrieval contexts that map user questions to content</li>
-<li class="">Developed an audit methodology focused on meaning, not format</li>
-<li class="">Positioned the content for AI consumption</li>
+<li class="">Design an entity taxonomy for learning content</li>
+<li class="">Create relationship types that capture how knowledge connects</li>
+<li class="">Build retrieval contexts that map user questions to content</li>
+<li class="">Develop an audit methodology focused on meaning, not format</li>
+<li class="">Position the content for AI consumption</li>
 </ul>
 <blockquote>
-<p><em><strong>Crucial takeaway</strong>: This experiment does NOT to prove that unstructured content is fine to live with! In fact, as Gemini rightly pointed out to me, none of the hoops we jumped through (multiple ontology audits, building json files with detailed contexts, or even scripts) would have been necessary if I had structured and modular content to begin with. Right now, any update to the source files warrants updating the ontology files and retrieval index; not a process that would work in an enterprise setting.</em></p>
+<p><em><strong>Crucial takeaway</strong>: This experiment does NOT prove that unstructured content is A-okay!<br> None of the hoops that Gemini and I jumped through (multiple ontology audits, building json files with detailed contexts, or even scripts) would have been necessary if I had structured and modular content to begin with.
+<br> Right now, any update to the source files warrants updating the ontology files and retrieval index; not a process that would work in an enterprise setting.</em></p>
 </blockquote>
 <p>A distant goal in this experiment is to convert the 11 modules into structured data. <em>How</em> is another project!</p>]]></content>
     </entry>
